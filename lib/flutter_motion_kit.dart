@@ -22,6 +22,16 @@ export 'loaders/futuristic/futuristic_loader.dart';
 export 'loaders/matrix/matrix_loader.dart';
 export 'loaders/gradient/gradient_loader.dart';
 
+// Advanced Category Loaders
+export 'loaders/ai/ai_category.dart';
+export 'loaders/liquid/liquid_category.dart';
+export 'loaders/glass/glass_category.dart';
+export 'loaders/space/space_category.dart';
+export 'loaders/gaming/gaming_category.dart';
+export 'loaders/physics/physics_category.dart';
+export 'loaders/minimal/minimal_category.dart';
+export 'loaders/saas/saas_category.dart';
+
 // Cards, Glassmorphism, Skeletons & Backgrounds
 export 'backgrounds/aurora_background.dart';
 export 'backgrounds/particle_background.dart';

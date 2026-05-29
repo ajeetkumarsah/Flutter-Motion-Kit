@@ -86,7 +86,7 @@ Here is the complete reference dictionary covering **each and every widget** ava
 
 1. [App-wide Services & Custom Themes](#1-app-wide-services--custom-themes)
 2. [Interactive Background Shaders](#2-interactive-background-shaders)
-3. [Ecosystem Loaders](#3-ecosystem-loaders)
+3. [Ecosystem Loaders](#3-ecosystem-loaders) (Standard & Advanced Categories)
 4. [Interactive Action Controls](#4-interactive-action-controls)
 5. [Micro-Interactions](#5-micro-interactions)
 6. [Cards, Morphings, Glass & Placeholders](#6-cards-morphings-glass--placeholders)
@@ -316,6 +316,201 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     size: 45.0,
   )
   ```
+
+---
+
+### Advanced Category Loaders (35+ Premium Presets)
+
+Exposes named category factory constructors on `MotionLoader` allowing direct and beautifully clean initialization of specialized category families.
+
+#### 🧠 AI Category (`MotionLoader.ai`)
+
+- **Visual Preview**:
+  ![Motion AI Category Loader](assets/gifs/motion_ai_category.gif)
+- **Description**: Sci-fi and machine learning inspired intelligence loaders rendering synaptic networks, Siri/Gemini-style waves, teleporting warp meshes, and real-time terminal token streams.
+- **Usage**:
+  ```dart
+  MotionLoader.ai(
+    style: MotionAiStyle.thinking,
+    color: MotionColors.primaryNeon,
+    size: 60.0,
+    glow: true,
+  )
+  ```
+- **Styles (`MotionAiStyle`)**:
+  - `neuralNetwork` — Synaptic node linking with moving glowing paths.
+  - `thinking` — Morphing siri-style waveforms with breathing tracking dots.
+  - `quantum` — Warp particles teleporting in grid formations.
+  - `tokenStream` — Monospace terminal character streams simulating LLM tokens.
+- **Parameters**:
+  - `style`: The active [MotionAiStyle] preset style to render.
+  - `color`: Primary color.
+  - `size`: Width and height constraints (default: `50.0`).
+  - `glow`: Toggles glowing shader borders.
+  - `particleCount`: Total synapses (for `neuralNetwork`).
+
+#### 🌊 Liquid Category (`MotionLoader.liquid`)
+
+- **Visual Preview**:
+  ![Motion Liquid Category Loader](assets/gifs/motion_liquid_category.gif)
+- **Description**: High-end fluid dynamics, organic droplet ripples, and expanding ink diffusion paint structures.
+- **Usage**:
+  ```dart
+  MotionLoader.liquid(
+    style: MotionLiquidStyle.lavaLamp,
+    color: Colors.pink,
+    size: 65.0,
+  )
+  ```
+- **Styles (`MotionLiquidStyle`)**:
+  - `lavaLamp` — Floating gooey metaballs morphing and merging together via radial gradient layers.
+  - `waterDrop` — Concentric drops landing on surfaces generating expanding refraction waves.
+  - `inkSpread` — Radial organic ink splats bleeding and diffusing over backdrops.
+- **Parameters**:
+  - `style`: The active [MotionLiquidStyle] preset style to render.
+  - `color`: Primary fluid color.
+  - `size`: Bounding box dimension size (default: `50.0`).
+
+#### 💎 Glassmorphism Category (`MotionLoader.glass`)
+
+- **Visual Preview**:
+  ![Motion Glass Category Loader](assets/gifs/motion_glass_category.gif)
+- **Description**: Translucent frosted containers, mesh ribbons, and rotating crystal facets with neon border highlights.
+- **Usage**:
+  ```dart
+  MotionLoader.glass(
+    style: MotionGlassStyle.prismCrystal,
+    color: Colors.cyanAccent,
+    size: 60.0,
+    glow: true,
+  )
+  ```
+- **Styles (`MotionGlassStyle`)**:
+  - `glassOrb` — Frosted glass spheres bouncing and sliding softly inside container boundaries.
+  - `prismCrystal` — Rotating 3D octahedron refracting rainbow gradients.
+  - `aurora` — Wavy multi-layered smooth northern lights mesh gradients.
+- **Parameters**:
+  - `style`: The active [MotionGlassStyle] preset style to render.
+  - `color`: Frosted highlight overlay color.
+  - `size`: Bounding box size (default: `50.0`).
+  - `glow`: Enables/disables back-glow shadows.
+
+#### 🌌 Space / Sci-Fi Category (`MotionLoader.space`)
+
+- **Visual Preview**:
+  ![Motion Space Category Loader](assets/gifs/motion_space_category.gif)
+- **Description**: Gravity vortices, logarithmic rotating galaxies, and star hyperspace speeds.
+- **Usage**:
+  ```dart
+  MotionLoader.space(
+    style: MotionSpaceStyle.blackHole,
+    color: Colors.amber,
+    size: 70.0,
+  )
+  ```
+- **Styles (`MotionSpaceStyle`)**:
+  - `blackHole` — Star particles accelerating in a high-gravity spiral vortex into a central dark singularity event horizon.
+  - `galaxy` — Kepler speed rotating 3-arm spirals with nebula core gradients and parallax depth.
+  - `warpSpeed` — Hyperspace starfields stretching perspective lines outwards exponentially.
+- **Parameters**:
+  - `style`: The active [MotionSpaceStyle] preset style to render.
+  - `color`: Accretion and trail color.
+  - `size`: Bounding box dimensions (default: `50.0`).
+  - `glow`: Toggles high-intensity core glowing shadows.
+
+#### ⚔️ Gaming Category (`MotionLoader.gaming`)
+
+- **Visual Preview**:
+  ![Motion Gaming Category Loader](assets/gifs/motion_gaming_category.gif)
+- **Description**: RPG xp gauges, counter-rotating runic spell wheels, and sequence CRT retro pixels.
+- **Usage**:
+  ```dart
+  MotionLoader.gaming(
+    style: MotionGamingStyle.bossFight,
+    color: Colors.redAccent,
+    size: 60.0,
+    glow: true,
+  )
+  ```
+- **Styles (`MotionGamingStyle`)**:
+  - `xpProgress` — Sweeping circular progress shields with gold sparks and level-up bounce pulses.
+  - `bossFight` — Counter-rotating runic circles executing radial shockwave fire particles.
+  - `pixel` — Retro CRT scanline grids scaling sequences of glitched 8-bit blocks.
+- **Parameters**:
+  - `style`: The active [MotionGamingStyle] preset style to render.
+  - `color`: Fire energy or grid color.
+  - `size`: Bounding box size (default: `50.0`).
+  - `glow`: Runic/fire glowing boundary switch.
+
+#### 🧬 Physics Category (`MotionLoader.physics`)
+
+- **Visual Preview**:
+  ![Motion Physics Category Loader](assets/gifs/motion_physics_category.gif)
+- **Description**: Conservation of momentum swing models, interlocking spring chains, and gravitational orbits.
+- **Usage**:
+  ```dart
+  MotionLoader.physics(
+    style: MotionPhysicsStyle.pendulum,
+    color: Colors.purple,
+    size: 60.0,
+  )
+  ```
+- **Styles (`MotionPhysicsStyle`)**:
+  - `pendulum` — Physics-based Newton's Cradle swinging collision momentum.
+  - `bounceChain` — Interlocking spring nodes transferring wave pulses.
+  - `gravityOrbit` — Planets accelerating eccentric orbits around a high-mass sun core.
+- **Parameters**:
+  - `style`: The active [MotionPhysicsStyle] preset style to render.
+  - `color`: Metal orb or core color.
+  - `size`: Bounding box dimension size (default: `50.0`).
+  - `glow`: Core/trail orbit glow toggle.
+
+#### ✏️ Minimalist Category (`MotionLoader.minimal`)
+
+- **Visual Preview**:
+  ![Motion Minimal Category Loader](assets/gifs/motion_minimal_category.gif)
+- **Description**: Infinity line drawings, seamless shape morphings, and waving silk ribbons.
+- **Usage**:
+  ```dart
+  MotionLoader.minimal(
+    style: MotionMinimalStyle.lineDraw,
+    color: Colors.teal,
+    size: 55.0,
+    strokeWidth: 4.0,
+  )
+  ```
+- **Styles (`MotionMinimalStyle`)**:
+  - `lineDraw` — Self-drawing Lemniscate of Bernoulli infinity loop paths.
+  - `morphShape` — Smooth point-by-point vector morphing (Circle ➔ Square ➔ Triangle ➔ Circle).
+  - `infiniteRibbon` — Waving curved 3D silk ribbons utilizing phase-shifted sines.
+- **Parameters**:
+  - `style`: The active [MotionMinimalStyle] preset style to render.
+  - `color`: Vector stroke/fill color.
+  - `size`: Bounding box size (default: `50.0`).
+  - `strokeWidth`: Vector outline thickness (Lemniscate).
+
+#### 📊 SaaS Category (`MotionLoader.saas`)
+
+- **Visual Preview**:
+  ![Motion SaaS Category Loader](assets/gifs/motion_saas_category.gif)
+- **Description**: Staggered matrix grid skeletons, active analytics charts, and sync arrows inside bezier clouds.
+- **Usage**:
+  ```dart
+  MotionLoader.saas(
+    style: MotionSaasStyle.analytics,
+    color: Colors.blueAccent,
+    size: 60.0,
+  )
+  ```
+- **Styles (`MotionSaasStyle`)**:
+  - `pulseGrid` — 3x3 staggered grid skeletons pulsing placeholder opacities.
+  - `analytics` — Auto-drawing line chart graphs with traveling active coordinate nodes.
+  - `cloudSync` — Cloud contours syncing upload bubbles into central spinning arrows.
+- **Parameters**:
+  - `style`: The active [MotionSaasStyle] preset style to render.
+  - `color`: Accent theme color.
+  - `size`: Width and height constraints (default: `50.0`).
+  - `glow`: Sync/arrow core glow toggle.
 
 ---
 
@@ -609,3 +804,22 @@ We welcome contributions! Please review our [Contributing Guidelines](CONTRIBUTI
 ## 📄 License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👤 Author
+
+**Ajeet Kumar Sah**
+- GitHub: [@ajeetkumarsah](https://github.com/ajeetkumarsah)
+
+---
+
+## ☕ Support the Project
+
+If you love this package and find it helpful, consider supporting the developer:
+
+* **Buy me a Chai or Coffee** ☕
+* **UPI ID**: `7761826600@kotak811`
+
+Every cup helps keep the screen bright and the code clean!
+

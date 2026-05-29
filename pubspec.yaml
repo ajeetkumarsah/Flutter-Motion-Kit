@@ -1,6 +1,6 @@
 name: flutter_motion_kit
 description: "Centralized high-performance Flutter animation and loader library. Premium loaders, glassmorphism, 3D tilt cards, transitions, and shaders in one package."
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/ajeetkumarsah/Flutter-Motion-Kit
 repository: https://github.com/ajeetkumarsah/Flutter-Motion-Kit
 issue_tracker: https://github.com/ajeetkumarsah/Flutter-Motion-Kit/issues

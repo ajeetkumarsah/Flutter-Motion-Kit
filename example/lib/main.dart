@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-// Import our package exports
 import 'package:flutter_motion_kit/flutter_motion_kit.dart';
 
 void main() async {
@@ -51,6 +50,310 @@ class _ShowcaseDashboardState extends State<ShowcaseDashboard> {
   MotionLoaderType _selectedLoaderType = MotionLoaderType.ai;
   Color _loaderColor = MotionColors.primaryNeon;
   double _loaderSize = 60.0;
+  bool _useAdvancedLoaders = false;
+  int _selectedAdvancedIndex = 0;
+
+  static const List<Map<String, String>> _advancedLoadersMeta = [
+    {'category': 'AI', 'style': 'neuralNetwork', 'label': 'NEURAL NETWORK'},
+    {'category': 'AI', 'style': 'thinking', 'label': 'AI THINKING'},
+    {'category': 'AI', 'style': 'quantum', 'label': 'QUANTUM WARP'},
+    {'category': 'AI', 'style': 'tokenStream', 'label': 'TOKEN STREAM'},
+    {'category': 'LIQUID', 'style': 'lavaLamp', 'label': 'LAVA LAMP'},
+    {'category': 'LIQUID', 'style': 'waterDrop', 'label': 'WATER DROP RIPPLE'},
+    {'category': 'LIQUID', 'style': 'inkSpread', 'label': 'INK SPREAD'},
+    {'category': 'GLASS', 'style': 'glassOrb', 'label': 'FROSTED GLASS ORB'},
+    {'category': 'GLASS', 'style': 'prismCrystal', 'label': 'PRISM CRYSTAL'},
+    {'category': 'GLASS', 'style': 'aurora', 'label': 'AURORA MESH'},
+    {'category': 'SPACE', 'style': 'blackHole', 'label': 'BLACK HOLE'},
+    {'category': 'SPACE', 'style': 'galaxy', 'label': 'GALAXY SPIRAL'},
+    {'category': 'SPACE', 'style': 'warpSpeed', 'label': 'WARP PERSPECTIVE'},
+    {'category': 'GAMING', 'style': 'xpProgress', 'label': 'HERO XP SHIELD'},
+    {'category': 'GAMING', 'style': 'bossFight', 'label': 'MAGIC RUNIC RING'},
+    {'category': 'GAMING', 'style': 'pixel', 'label': 'RETRO CRT PIXEL'},
+    {'category': 'PHYSICS', 'style': 'pendulum', 'label': 'NEWTON PENDULUM'},
+    {'category': 'PHYSICS', 'style': 'bounceChain', 'label': 'BOUNCE CHAIN'},
+    {'category': 'PHYSICS', 'style': 'gravityOrbit', 'label': 'GRAVITY ORBIT'},
+    {'category': 'MINIMAL', 'style': 'lineDraw', 'label': 'LEMNISCATE PATH'},
+    {'category': 'MINIMAL', 'style': 'morphShape', 'label': 'MORPHING SHAPES'},
+    {
+      'category': 'MINIMAL',
+      'style': 'infiniteRibbon',
+      'label': '3D WAVE RIBBON'
+    },
+    {'category': 'SAAS', 'style': 'pulseGrid', 'label': 'SKELETON GRID'},
+    {'category': 'SAAS', 'style': 'analytics', 'label': 'CHART ANALYTICS'},
+    {'category': 'SAAS', 'style': 'cloudSync', 'label': 'SYNC CLOUD BUBBLES'},
+  ];
+
+  Widget _buildAdvancedLoaderItem(int index) {
+    switch (index) {
+      case 0:
+        return MotionLoader.ai(
+            style: MotionAiStyle.neuralNetwork,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 1:
+        return MotionLoader.ai(
+            style: MotionAiStyle.thinking,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 2:
+        return MotionLoader.ai(
+            style: MotionAiStyle.quantum,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 3:
+        return MotionLoader.ai(
+            style: MotionAiStyle.tokenStream,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 4:
+        return MotionLoader.liquid(
+            style: MotionLiquidStyle.lavaLamp,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 5:
+        return MotionLoader.liquid(
+            style: MotionLiquidStyle.waterDrop,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 6:
+        return MotionLoader.liquid(
+            style: MotionLiquidStyle.inkSpread,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 7:
+        return MotionLoader.glass(
+            style: MotionGlassStyle.glassOrb,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 8:
+        return MotionLoader.glass(
+            style: MotionGlassStyle.prismCrystal,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 9:
+        return MotionLoader.glass(
+            style: MotionGlassStyle.aurora,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 10:
+        return MotionLoader.space(
+            style: MotionSpaceStyle.blackHole,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 11:
+        return MotionLoader.space(
+            style: MotionSpaceStyle.galaxy,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 12:
+        return MotionLoader.space(
+            style: MotionSpaceStyle.warpSpeed,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 13:
+        return MotionLoader.gaming(
+            style: MotionGamingStyle.xpProgress,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 14:
+        return MotionLoader.gaming(
+            style: MotionGamingStyle.bossFight,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 15:
+        return MotionLoader.gaming(
+            style: MotionGamingStyle.pixel,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 16:
+        return MotionLoader.physics(
+            style: MotionPhysicsStyle.pendulum,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 17:
+        return MotionLoader.physics(
+            style: MotionPhysicsStyle.bounceChain,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 18:
+        return MotionLoader.physics(
+            style: MotionPhysicsStyle.gravityOrbit,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 19:
+        return MotionLoader.minimal(
+            style: MotionMinimalStyle.lineDraw,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 20:
+        return MotionLoader.minimal(
+            style: MotionMinimalStyle.morphShape,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 21:
+        return MotionLoader.minimal(
+            style: MotionMinimalStyle.infiniteRibbon,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 22:
+        return MotionLoader.saas(
+            style: MotionSaasStyle.pulseGrid,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 23:
+        return MotionLoader.saas(
+            style: MotionSaasStyle.analytics,
+            color: _loaderColor,
+            size: _loaderSize);
+      case 24:
+        return MotionLoader.saas(
+            style: MotionSaasStyle.cloudSync,
+            color: _loaderColor,
+            size: _loaderSize);
+      default:
+        return Container();
+    }
+  }
+
+  Widget _buildAdvancedLoaderItemPreview(int index, Color color) {
+    switch (index) {
+      case 0:
+        return MotionLoader.ai(
+            style: MotionAiStyle.neuralNetwork,
+            color: color,
+            size: 28,
+            glow: false);
+      case 1:
+        return MotionLoader.ai(
+            style: MotionAiStyle.thinking, color: color, size: 28, glow: false);
+      case 2:
+        return MotionLoader.ai(
+            style: MotionAiStyle.quantum, color: color, size: 28, glow: false);
+      case 3:
+        return MotionLoader.ai(
+            style: MotionAiStyle.tokenStream, color: color, size: 28);
+      case 4:
+        return MotionLoader.liquid(
+            style: MotionLiquidStyle.lavaLamp, color: color, size: 28);
+      case 5:
+        return MotionLoader.liquid(
+            style: MotionLiquidStyle.waterDrop, color: color, size: 28);
+      case 6:
+        return MotionLoader.liquid(
+            style: MotionLiquidStyle.inkSpread, color: color, size: 28);
+      case 7:
+        return MotionLoader.glass(
+            style: MotionGlassStyle.glassOrb,
+            color: color,
+            size: 28,
+            glow: false);
+      case 8:
+        return MotionLoader.glass(
+            style: MotionGlassStyle.prismCrystal,
+            color: color,
+            size: 28,
+            glow: false);
+      case 9:
+        return MotionLoader.glass(
+            style: MotionGlassStyle.aurora, color: color, size: 28);
+      case 10:
+        return MotionLoader.space(
+            style: MotionSpaceStyle.blackHole,
+            color: color,
+            size: 28,
+            glow: false);
+      case 11:
+        return MotionLoader.space(
+            style: MotionSpaceStyle.galaxy, color: color, size: 28);
+      case 12:
+        return MotionLoader.space(
+            style: MotionSpaceStyle.warpSpeed, color: color, size: 28);
+      case 13:
+        return MotionLoader.gaming(
+            style: MotionGamingStyle.xpProgress,
+            color: color,
+            size: 28,
+            glow: false);
+      case 14:
+        return MotionLoader.gaming(
+            style: MotionGamingStyle.bossFight,
+            color: color,
+            size: 28,
+            glow: false);
+      case 15:
+        return MotionLoader.gaming(
+            style: MotionGamingStyle.pixel, color: color, size: 28);
+      case 16:
+        return MotionLoader.physics(
+            style: MotionPhysicsStyle.pendulum, color: color, size: 28);
+      case 17:
+        return MotionLoader.physics(
+            style: MotionPhysicsStyle.bounceChain, color: color, size: 28);
+      case 18:
+        return MotionLoader.physics(
+            style: MotionPhysicsStyle.gravityOrbit,
+            color: color,
+            size: 28,
+            glow: false);
+      case 19:
+        return MotionLoader.minimal(
+            style: MotionMinimalStyle.lineDraw, color: color, size: 28);
+      case 20:
+        return MotionLoader.minimal(
+            style: MotionMinimalStyle.morphShape, color: color, size: 28);
+      case 21:
+        return MotionLoader.minimal(
+            style: MotionMinimalStyle.infiniteRibbon, color: color, size: 28);
+      case 22:
+        return MotionLoader.saas(
+            style: MotionSaasStyle.pulseGrid, color: color, size: 28);
+      case 23:
+        return MotionLoader.saas(
+            style: MotionSaasStyle.analytics, color: color, size: 28);
+      case 24:
+        return MotionLoader.saas(
+            style: MotionSaasStyle.cloudSync,
+            color: color,
+            size: 28,
+            glow: false);
+      default:
+        return Container();
+    }
+  }
+
+  Widget _buildPresetToggleBtn(bool targetValue, String label) {
+    final active = _useAdvancedLoaders == targetValue;
+    final primaryColor = Get.find<MotionThemeController>().theme.primaryColor;
+    return InkWell(
+      onTap: () => setState(() => _useAdvancedLoaders = targetValue),
+      borderRadius: BorderRadius.circular(8),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+        decoration: BoxDecoration(
+          color: active
+              ? primaryColor.withValues(alpha: 0.15)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: active ? primaryColor : Colors.white24,
+            width: 1,
+          ),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            fontSize: 9,
+            fontWeight: FontWeight.bold,
+            color: active ? primaryColor : Colors.grey[400],
+            letterSpacing: 0.5,
+          ),
+        ),
+      ),
+    );
+  }
 
   // Morph widget configuration
   int _morphStep = 0;
@@ -89,6 +392,19 @@ class _ShowcaseDashboardState extends State<ShowcaseDashboard> {
                 : _loaderColor == Colors.cyanAccent
                     ? 'Colors.cyanAccent'
                     : 'Colors.white';
+
+    if (_useAdvancedLoaders) {
+      final meta = _advancedLoadersMeta[_selectedAdvancedIndex];
+      final styleEnum =
+          'Motion${meta['category']!.substring(0, 1)}${meta['category']!.substring(1).toLowerCase()}Style';
+      return '''
+MotionLoader.${meta['category']!.toLowerCase()}(
+  style: $styleEnum.${meta['style']},
+  color: $colorStr,
+  size: ${_loaderSize.round()}.0,
+)
+''';
+    }
 
     return '''
 MotionLoader(
@@ -765,12 +1081,25 @@ MotionLoader(
         child: Column(
           children: [
             // Grid selection wrapper with explicit height
-            const Text(
-              'Select Animation Preset',
-              style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Select Animation Preset',
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _buildPresetToggleBtn(false, 'STANDARD'),
+                    const SizedBox(width: 4),
+                    _buildPresetToggleBtn(true, 'ADVANCED'),
+                  ],
+                ),
+              ],
             ),
             const SizedBox(height: 12),
             SizedBox(
@@ -805,12 +1134,25 @@ MotionLoader(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Select Animation Preset',
-                style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Select Animation Preset',
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _buildPresetToggleBtn(false, 'STANDARD'),
+                      const SizedBox(width: 8),
+                      _buildPresetToggleBtn(true, 'ADVANCED (35+ EXTRAS)'),
+                    ],
+                  ),
+                ],
               ),
               const SizedBox(height: 12),
               Expanded(
@@ -846,6 +1188,65 @@ MotionLoader(
   }
 
   Widget _buildLoadersGrid(MotionThemeData activeTheme) {
+    if (_useAdvancedLoaders) {
+      return GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          childAspectRatio: 1.3,
+        ),
+        physics: const BouncingScrollPhysics(),
+        itemCount: _advancedLoadersMeta.length,
+        itemBuilder: (context, index) {
+          final meta = _advancedLoadersMeta[index];
+          final active = _selectedAdvancedIndex == index;
+
+          return InkWell(
+            onTap: () => setState(() => _selectedAdvancedIndex = index),
+            borderRadius: BorderRadius.circular(16),
+            child: Container(
+              decoration: BoxDecoration(
+                color: active
+                    ? activeTheme.primaryColor.withValues(alpha: 0.08)
+                    : Colors.black.withValues(alpha: 0.18),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                  color: active ? activeTheme.primaryColor : Colors.white10,
+                  width: active ? 1.5 : 1,
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 32,
+                    height: 32,
+                    child: Center(
+                      child: _buildAdvancedLoaderItemPreview(index,
+                          active ? activeTheme.primaryColor : Colors.grey),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    meta['label']!,
+                    style: TextStyle(
+                      fontSize: 8,
+                      fontWeight: FontWeight.bold,
+                      color: active ? activeTheme.primaryColor : Colors.white70,
+                      letterSpacing: 0.5,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    }
+
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
@@ -927,11 +1328,13 @@ MotionLoader(
               children: [
                 Expanded(
                   child: Center(
-                    child: MotionLoader(
-                      type: _selectedLoaderType,
-                      color: _loaderColor,
-                      size: _loaderSize,
-                    ),
+                    child: _useAdvancedLoaders
+                        ? _buildAdvancedLoaderItem(_selectedAdvancedIndex)
+                        : MotionLoader(
+                            type: _selectedLoaderType,
+                            color: _loaderColor,
+                            size: _loaderSize,
+                          ),
                   ),
                 ),
                 const SizedBox(height: 10),

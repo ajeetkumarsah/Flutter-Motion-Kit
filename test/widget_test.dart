@@ -31,11 +31,84 @@ void main() {
         ),
       );
 
-      // Verify widget structures are created in the tree
       expect(find.byType(MotionLoader), findsNWidgets(3));
       expect(find.byType(MotionWaveLoader), findsOneWidget);
       expect(find.byType(MotionMatrixLoader), findsOneWidget);
       expect(find.byType(MotionFuturisticLoader), findsOneWidget);
+    });
+
+    testWidgets('MotionLoader Premium Category Render Tests',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  // AI Styles
+                  MotionLoader.ai(style: MotionAiStyle.neuralNetwork, size: 40),
+                  MotionLoader.ai(style: MotionAiStyle.thinking, size: 40),
+                  MotionLoader.ai(style: MotionAiStyle.quantum, size: 40),
+                  MotionLoader.ai(style: MotionAiStyle.tokenStream, size: 40),
+
+                  // Liquid Styles
+                  MotionLoader.liquid(
+                      style: MotionLiquidStyle.lavaLamp, size: 40),
+                  MotionLoader.liquid(
+                      style: MotionLiquidStyle.waterDrop, size: 40),
+                  MotionLoader.liquid(
+                      style: MotionLiquidStyle.inkSpread, size: 40),
+
+                  // Glass Styles
+                  MotionLoader.glass(
+                      style: MotionGlassStyle.glassOrb, size: 40),
+                  MotionLoader.glass(
+                      style: MotionGlassStyle.prismCrystal, size: 40),
+                  MotionLoader.glass(style: MotionGlassStyle.aurora, size: 40),
+
+                  // Space Styles
+                  MotionLoader.space(
+                      style: MotionSpaceStyle.blackHole, size: 40),
+                  MotionLoader.space(style: MotionSpaceStyle.galaxy, size: 40),
+                  MotionLoader.space(
+                      style: MotionSpaceStyle.warpSpeed, size: 40),
+
+                  // Gaming Styles
+                  MotionLoader.gaming(
+                      style: MotionGamingStyle.xpProgress, size: 40),
+                  MotionLoader.gaming(
+                      style: MotionGamingStyle.bossFight, size: 40),
+                  MotionLoader.gaming(style: MotionGamingStyle.pixel, size: 40),
+
+                  // Physics Styles
+                  MotionLoader.physics(
+                      style: MotionPhysicsStyle.pendulum, size: 40),
+                  MotionLoader.physics(
+                      style: MotionPhysicsStyle.bounceChain, size: 40),
+                  MotionLoader.physics(
+                      style: MotionPhysicsStyle.gravityOrbit, size: 40),
+
+                  // Minimal Styles
+                  MotionLoader.minimal(
+                      style: MotionMinimalStyle.lineDraw, size: 40),
+                  MotionLoader.minimal(
+                      style: MotionMinimalStyle.morphShape, size: 40),
+                  MotionLoader.minimal(
+                      style: MotionMinimalStyle.infiniteRibbon, size: 40),
+
+                  // SaaS Styles
+                  MotionLoader.saas(style: MotionSaasStyle.pulseGrid, size: 40),
+                  MotionLoader.saas(style: MotionSaasStyle.analytics, size: 40),
+                  MotionLoader.saas(style: MotionSaasStyle.cloudSync, size: 40),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+
+      // Verify that all 25 premium category styles render successfully
+      expect(find.byType(MotionLoader), findsNWidgets(25));
     });
 
     testWidgets('MotionButton Tap & Custom Ripple Render Tests',
@@ -59,7 +132,6 @@ void main() {
       expect(find.text('Tap Me'), findsOneWidget);
       expect(tapped, isFalse);
 
-      // Trigger standard tap down/up cycles
       await tester.tap(find.byType(MotionButton));
       await tester.pumpAndSettle();
 

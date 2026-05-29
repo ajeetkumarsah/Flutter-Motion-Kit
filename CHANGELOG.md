@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2026-05-29
+
+### Added
+- Expanded the loader ecosystem with **8 premium categories hosting 24 advanced vector styles**:
+  - **Glassmorphism Category**: Frosted glass orbs, spinning 3D refracting prism crystals, and multi-layered wavy northern lights Aurora mesh ribbons.
+  - **Space & Sci-Fi Category**: Accreting event horizon Black Holes, Keplerian rotating Galaxies, and exponential 3D Warp Speed perspectives.
+  - **Gaming Category**: Gold XP Progress shield arcs, counter-rotating magical Boss Fight pentagram runic circles with flare explosions, and CRT retro scanline Pixels.
+  - **Physics Category**: Physical momentum Pendulums (Newton's Cradle), elastic-easing spring Bounce Chains, and Kepler eccentric Gravity Orbits.
+  - **Minimalist Category**: Lemniscate of Bernoulli infinity self-drawing lines, point-by-point vector Morphing shapes, and wavy 3D silk ribbons.
+  - **SaaS Category**: Staggered matrix Pulse skeleton screens, auto-drawing Analytics line graphs with traveling indicators, and Cloud Sync sync upload arrow bubbles.
+- Introduced Named Category Factory constructors on `MotionLoader` (`MotionLoader.ai`, `MotionLoader.liquid`, `MotionLoader.glass`, `MotionLoader.space`, `MotionLoader.gaming`, `MotionLoader.physics`, `MotionLoader.minimal`, `MotionLoader.saas`).
+- Exposed all new styles, enums, and components in the master library exports.
+- Integrated standard and advanced category selector panels inside the interactive SaaS dashboard playgrounds.
+- Upgraded live integration code generators to dynamically output exact constructor code snippets reflecting active customizations.
+- Mapped and verified 100% correct compile-times and widget trees for all 35+ loaders in automated tests.
+
 ## [1.0.1] - 2026-05-29
 
 ### Added

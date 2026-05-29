@@ -8,7 +8,6 @@ void main() {
     late MotionThemeController themeController;
 
     setUp(() {
-      // Clear GetX instance registry and re-inject controllers
       Get.reset();
       motionController = Get.put(MotionController());
       themeController = Get.put(MotionThemeController());
@@ -23,19 +22,17 @@ void main() {
       expect(motionController.performanceMode, isFalse);
       expect(motionController.speedMultiplier, equals(1.0));
 
-      // Scaling normal speed
       const baseDuration = Duration(milliseconds: 1000);
       expect(motionController.getScaledDuration(baseDuration),
           equals(baseDuration));
 
-      // Speeding up (2.0x) makes duration shorter (500ms)
       motionController.setSpeedMultiplier(2.0);
       expect(motionController.speedMultiplier, equals(2.0));
       expect(motionController.getScaledDuration(baseDuration).inMilliseconds,
           equals(500));
 
-      // Slowing down (0.5x) makes duration longer (2000ms)
       motionController.setSpeedMultiplier(0.5);
+      expect(motionController.speedMultiplier, equals(0.5));
       expect(motionController.getScaledDuration(baseDuration).inMilliseconds,
           equals(2000));
     });
@@ -46,7 +43,6 @@ void main() {
       motionController.toggleReducedMotion();
       expect(motionController.reducedMotion, isTrue);
 
-      // Reduced motion forces scaled duration to zero for accessibility compliance
       const baseDuration = Duration(milliseconds: 800);
       expect(motionController.getScaledDuration(baseDuration),
           equals(Duration.zero));
@@ -56,19 +52,29 @@ void main() {
       expect(themeController.isDark, isTrue);
       expect(themeController.glowEffect, isTrue);
 
-      // Toggle Theme
       themeController.toggleTheme();
       expect(themeController.isDark, isFalse);
       expect(themeController.theme.primaryColor,
           equals(MotionColors.electricBlue));
 
-      // Apply Cyberpunk Presets
       themeController.applyCyberpunkPreset();
       expect(themeController.isDark, isTrue);
       expect(
           themeController.theme.primaryColor, equals(MotionColors.primaryNeon));
       expect(themeController.theme.accentGradient,
           equals(MotionColors.cyberGradient));
+    });
+
+    test('Category Style Enums Initialization Tests', () {
+      // Validate all category enum entries are compile-safe and exist
+      expect(MotionAiStyle.values.length, equals(4));
+      expect(MotionLiquidStyle.values.length, equals(3));
+      expect(MotionGlassStyle.values.length, equals(3));
+      expect(MotionSpaceStyle.values.length, equals(3));
+      expect(MotionGamingStyle.values.length, equals(3));
+      expect(MotionPhysicsStyle.values.length, equals(3));
+      expect(MotionMinimalStyle.values.length, equals(3));
+      expect(MotionSaasStyle.values.length, equals(3));
     });
   });
 }
