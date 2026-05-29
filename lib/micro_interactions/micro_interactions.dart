@@ -1,5 +1,7 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
+
 import '../../core/utils/motion_curves.dart';
 
 class MotionLikeButton extends StatefulWidget {
@@ -123,7 +125,7 @@ class _LikeBurstPainter extends CustomPainter {
         center.dy + currentDistance * math.sin(angle),
       );
 
-      paint.color = color.withOpacity(opacity.clamp(0.0, 1.0));
+      paint.color = color.withValues(alpha: opacity.clamp(0.0, 1.0));
       canvas.drawCircle(sparkCenter, 3.0 * (1.0 - burst), paint);
     }
   }
@@ -147,7 +149,8 @@ class MotionAnimatedCheckmark extends StatefulWidget {
   });
 
   @override
-  State<MotionAnimatedCheckmark> createState() => _MotionAnimatedCheckmarkState();
+  State<MotionAnimatedCheckmark> createState() =>
+      _MotionAnimatedCheckmarkState();
 }
 
 class _MotionAnimatedCheckmarkState extends State<MotionAnimatedCheckmark>
@@ -162,7 +165,8 @@ class _MotionAnimatedCheckmarkState extends State<MotionAnimatedCheckmark>
       vsync: this,
       duration: const Duration(milliseconds: 350),
     );
-    _checkAnimation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
+    _checkAnimation =
+        CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
 
     if (widget.checked) {
       _controller.value = 1.0;
@@ -227,7 +231,7 @@ class _CheckmarkPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
 
     final circlePaint = Paint()
-      ..color = color.withOpacity(0.15)
+      ..color = color.withValues(alpha: 0.15)
       ..style = PaintingStyle.fill;
 
     final center = Offset(size.width / 2, size.height / 2);
@@ -250,7 +254,8 @@ class _CheckmarkPainter extends CustomPainter {
     path.lineTo(endX, endY);
 
     // Compute animated path metrics manually
-    final totalLength = (midX - startX) + (endX - midX); // Simple scale approximation
+    final totalLength =
+        (midX - startX) + (endX - midX); // Simple scale approximation
     final currentPath = Path();
 
     if (progress > 0) {

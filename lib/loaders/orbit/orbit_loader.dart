@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 class MotionOrbitLoader extends StatefulWidget {
@@ -71,18 +72,18 @@ class _OrbitPainter extends CustomPainter {
 
     // 1. Draw central glowing core
     final corePaint = Paint()
-      ..color = color.withOpacity(0.9)
+      ..color = color.withValues(alpha: 0.9)
       ..style = PaintingStyle.fill;
     canvas.drawCircle(center, coreRadius, corePaint);
 
     final glowPaint = Paint()
-      ..color = color.withOpacity(0.3)
+      ..color = color.withValues(alpha: 0.3)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6);
     canvas.drawCircle(center, coreRadius + 4, glowPaint);
 
     // 2. Draw outer orbital line paths
     final orbitLinePaint = Paint()
-      ..color = color.withOpacity(0.15)
+      ..color = color.withValues(alpha: 0.15)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0;
     canvas.drawCircle(center, orbitRadius, orbitLinePaint);
@@ -105,7 +106,7 @@ class _OrbitPainter extends CustomPainter {
 
       // Tail trailing glow
       final tailPaint = Paint()
-        ..color = color.withOpacity(0.4)
+        ..color = color.withValues(alpha: 0.4)
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 3);
       canvas.drawCircle(planetCenter, planetRadius + 2, tailPaint);
     }

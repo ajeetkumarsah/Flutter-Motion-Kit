@@ -1,10 +1,12 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../core/theme/motion_colors.dart';
-import '../core/theme/motion_theme.dart';
+
 import '../core/controllers/motion_controller.dart';
 import '../core/extensions/animation_extensions.dart';
+import '../core/theme/motion_colors.dart';
+import '../core/theme/motion_theme.dart';
 import '../loaders/motion_loader.dart';
 
 enum MotionButtonEffect {
@@ -129,7 +131,7 @@ class _MotionButtonState extends State<MotionButton>
               activeTheme.glowEffect &&
               !isReduced)
             BoxShadow(
-              color: btnColor.withOpacity(0.4),
+              color: btnColor.withValues(alpha: 0.4),
               blurRadius: 16,
               spreadRadius: 2,
               offset: const Offset(0, 4),
@@ -164,14 +166,15 @@ class _MotionButtonState extends State<MotionButton>
           );
         } else {
           // If ripple, paint the canvas ripple overlay
-          if (widget.effect == MotionButtonEffect.ripple && _rippleTapOffset != null) {
+          if (widget.effect == MotionButtonEffect.ripple &&
+              _rippleTapOffset != null) {
             buttonWidget = ClipRRect(
               borderRadius: BorderRadius.circular(widget.borderRadius),
               child: CustomPaint(
                 foregroundPainter: _RipplePainter(
                   offset: _rippleTapOffset!,
                   progress: _rippleController,
-                  color: Colors.white.withOpacity(0.28),
+                  color: Colors.white.withValues(alpha: 0.28),
                 ),
                 child: buttonWidget,
               ),
@@ -392,12 +395,13 @@ class _RipplePainter extends CustomPainter {
     final t = progress.value;
     if (t == 0.0 || t == 1.0) return;
 
-    final maxRadius = math.sqrt(size.width * size.width + size.height * size.height);
+    final maxRadius =
+        math.sqrt(size.width * size.width + size.height * size.height);
     final currentRadius = maxRadius * t;
     final opacity = (1.0 - t).clamp(0.0, 1.0);
 
     final paint = Paint()
-      ..color = color.withOpacity(opacity * color.opacity)
+      ..color = color.withValues(alpha: opacity * color.opacity)
       ..style = PaintingStyle.fill;
 
     canvas.drawCircle(offset, currentRadius, paint);
@@ -500,7 +504,7 @@ class _MotionMorphingButtonState extends State<MotionMorphingButton> {
             boxShadow: [
               if (activeTheme.glowEffect)
                 BoxShadow(
-                  color: stateColor.withOpacity(0.35),
+                  color: stateColor.withValues(alpha: 0.35),
                   blurRadius: 12,
                   offset: const Offset(0, 4),
                 )

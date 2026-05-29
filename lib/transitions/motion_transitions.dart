@@ -1,11 +1,15 @@
-import 'dart:ui';
 import 'dart:math' as math;
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+
 import '../../core/utils/motion_curves.dart';
 
 class MotionTransition {
   /// 1. Fade transition route
-  static PageRouteBuilder fade({required Widget page, Duration duration = const Duration(milliseconds: 300)}) {
+  static PageRouteBuilder fade(
+      {required Widget page,
+      Duration duration = const Duration(milliseconds: 300)}) {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionDuration: duration,
@@ -20,14 +24,17 @@ class MotionTransition {
   }
 
   /// 2. Slide transition route from right to left
-  static PageRouteBuilder slideRight({required Widget page, Duration duration = const Duration(milliseconds: 350)}) {
+  static PageRouteBuilder slideRight(
+      {required Widget page,
+      Duration duration = const Duration(milliseconds: 350)}) {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionDuration: duration,
       reverseTransitionDuration: duration,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        final tween = Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset.zero)
-            .chain(CurveTween(curve: MotionCurves.swiftOut));
+        final tween =
+            Tween<Offset>(begin: const Offset(1.0, 0.0), end: Offset.zero)
+                .chain(CurveTween(curve: MotionCurves.swiftOut));
         return SlideTransition(
           position: animation.drive(tween),
           child: child,
@@ -37,7 +44,9 @@ class MotionTransition {
   }
 
   /// 3. Zoom / Scale transition route
-  static PageRouteBuilder zoom({required Widget page, Duration duration = const Duration(milliseconds: 350)}) {
+  static PageRouteBuilder zoom(
+      {required Widget page,
+      Duration duration = const Duration(milliseconds: 350)}) {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionDuration: duration,
@@ -57,10 +66,12 @@ class MotionTransition {
   }
 
   /// 4. Cyber Glass overlay backdrop blur transition
-  static PageRouteBuilder glassOverlay({required Widget page, Duration duration = const Duration(milliseconds: 400)}) {
+  static PageRouteBuilder glassOverlay(
+      {required Widget page,
+      Duration duration = const Duration(milliseconds: 400)}) {
     return PageRouteBuilder(
       opaque: false,
-      barrierColor: Colors.black.withOpacity(0.4),
+      barrierColor: Colors.black.withValues(alpha: 0.4),
       pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionDuration: duration,
       reverseTransitionDuration: duration,
@@ -162,10 +173,11 @@ class _LiquidClipper extends CustomClipper<Path> {
     // Dampen amplitude as progress approaches 0.0 and 1.0
     final waveAmplitude = size.width * 0.1 * math.sin(progress * math.pi);
     final wavePoints = 40;
-    
+
     for (int i = 1; i <= wavePoints; i++) {
       final y = size.height * (i / wavePoints);
-      final waveOffset = waveAmplitude * math.sin((y / size.height) * 2.5 * math.pi);
+      final waveOffset =
+          waveAmplitude * math.sin((y / size.height) * 2.5 * math.pi);
       path.lineTo(sweepX - waveOffset, y);
     }
 
@@ -176,5 +188,6 @@ class _LiquidClipper extends CustomClipper<Path> {
   }
 
   @override
-  bool shouldReclip(covariant _LiquidClipper oldClipper) => oldClipper.progress != progress;
+  bool shouldReclip(covariant _LiquidClipper oldClipper) =>
+      oldClipper.progress != progress;
 }

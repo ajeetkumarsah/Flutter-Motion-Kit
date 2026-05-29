@@ -1,6 +1,8 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../core/controllers/motion_controller.dart';
 
 class MotionMatrixLoader extends StatefulWidget {
@@ -27,7 +29,9 @@ class _MotionMatrixLoaderState extends State<MotionMatrixLoader>
   @override
   void initState() {
     super.initState();
-    final motion = Get.isRegistered<MotionController>() ? Get.find<MotionController>() : null;
+    final motion = Get.isRegistered<MotionController>()
+        ? Get.find<MotionController>()
+        : null;
     final speed = motion?.speedMultiplier ?? 1.0;
 
     _controller = AnimationController(
@@ -72,7 +76,8 @@ class _MotionMatrixLoaderState extends State<MotionMatrixLoader>
           if (_controller.value % 0.15 < 0.02) {
             for (var stream in _streams) {
               if (_random.nextDouble() < 0.3) {
-                stream.chars[_random.nextInt(stream.chars.length)] = _getRandomChar();
+                stream.chars[_random.nextInt(stream.chars.length)] =
+                    _getRandomChar();
               }
             }
           }
@@ -130,28 +135,28 @@ class _MatrixPainter extends CustomPainter {
 
         // Fading opacity along the tail
         final ratio = i / stream.chars.length;
-        final opacity = (1.0 - ratio) * (1.0 - (charY / size.height).clamp(0.0, 1.0));
-        
+        final opacity =
+            (1.0 - ratio) * (1.0 - (charY / size.height).clamp(0.0, 1.0));
+
         // Leading character is extra bright/white
         final charColor = i == 0
             ? Colors.white
-            : color.withOpacity(opacity.clamp(0.05, 1.0));
+            : color.withValues(alpha: opacity.clamp(0.05, 1.0));
 
         final textPainter = TextPainter(
           text: TextSpan(
             text: stream.chars[i],
             style: TextStyle(
-              color: charColor,
-              fontSize: size.width / 7,
-              fontWeight: i == 0 ? FontWeight.bold : FontWeight.w500,
-              fontFamily: 'monospace',
-              shadows: [
-                Shadow(
-                  color: color.withOpacity(0.8),
-                  blurRadius: i == 0 ? 8 : 2,
-                )
-              ]
-            ),
+                color: charColor,
+                fontSize: size.width / 7,
+                fontWeight: i == 0 ? FontWeight.bold : FontWeight.w500,
+                fontFamily: 'monospace',
+                shadows: [
+                  Shadow(
+                    color: color.withValues(alpha: 0.8),
+                    blurRadius: i == 0 ? 8 : 2,
+                  )
+                ]),
           ),
           textDirection: TextDirection.ltr,
         );

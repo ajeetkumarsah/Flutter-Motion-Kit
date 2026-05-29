@@ -1,6 +1,8 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../core/controllers/motion_controller.dart';
 
 class MotionParticleBackground extends StatefulWidget {
@@ -14,7 +16,8 @@ class MotionParticleBackground extends StatefulWidget {
   });
 
   @override
-  State<MotionParticleBackground> createState() => _MotionParticleBackgroundState();
+  State<MotionParticleBackground> createState() =>
+      _MotionParticleBackgroundState();
 }
 
 class _MotionParticleBackgroundState extends State<MotionParticleBackground>
@@ -41,7 +44,7 @@ class _MotionParticleBackgroundState extends State<MotionParticleBackground>
 
   void _initializeParticles(Size size, bool performanceMode) {
     if (_particles.isNotEmpty) return;
-    
+
     // Scale count based on hardware performance mode
     final count = performanceMode ? 15 : 45;
     for (int i = 0; i < count; i++) {
@@ -82,7 +85,8 @@ class _MotionParticleBackgroundState extends State<MotionParticleBackground>
         ? Get.find<MotionController>()
         : null;
 
-    final color = widget.particleColor ?? Theme.of(context).primaryColor.withOpacity(0.5);
+    final color = widget.particleColor ??
+        Theme.of(context).primaryColor.withValues(alpha: 0.5);
 
     return Obx(() {
       final isReduced = motionController?.reducedMotion ?? false;
@@ -107,7 +111,8 @@ class _MotionParticleBackgroundState extends State<MotionParticleBackground>
                         particleColor: color,
                         random: _random,
                         tapPosition: _tapPosition,
-                        onInit: (size) => _initializeParticles(size, performanceMode),
+                        onInit: (size) =>
+                            _initializeParticles(size, performanceMode),
                       ),
                     );
                   },
@@ -200,7 +205,7 @@ class _ParticlePainter extends CustomPainter {
         continue;
       }
 
-      paint.color = particleColor.withOpacity(p.opacity.clamp(0.0, 1.0));
+      paint.color = particleColor.withValues(alpha: p.opacity.clamp(0.0, 1.0));
       canvas.drawCircle(Offset(p.x, p.y), p.radius, paint);
     }
   }

@@ -1,6 +1,8 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../core/controllers/motion_controller.dart';
 
 class MotionFuturisticLoader extends StatefulWidget {
@@ -24,7 +26,9 @@ class _MotionFuturisticLoaderState extends State<MotionFuturisticLoader>
   @override
   void initState() {
     super.initState();
-    final motion = Get.isRegistered<MotionController>() ? Get.find<MotionController>() : null;
+    final motion = Get.isRegistered<MotionController>()
+        ? Get.find<MotionController>()
+        : null;
     final speed = motion?.speedMultiplier ?? 1.0;
 
     _controller = AnimationController(
@@ -75,7 +79,7 @@ class _FuturisticRadarPainter extends CustomPainter {
 
     // 1. Draw outer dashboard ticks
     final tickPaint = Paint()
-      ..color = color.withOpacity(0.3)
+      ..color = color.withValues(alpha: 0.3)
       ..strokeWidth = 1.5
       ..style = PaintingStyle.stroke;
 
@@ -99,9 +103,9 @@ class _FuturisticRadarPainter extends CustomPainter {
     final sweepPaint = Paint()
       ..shader = SweepGradient(
         colors: [
-          color.withOpacity(0.0),
-          color.withOpacity(0.1),
-          color.withOpacity(0.5),
+          color.withValues(alpha: 0.0),
+          color.withValues(alpha: 0.1),
+          color.withValues(alpha: 0.5),
           color,
         ],
         stops: const [0.0, 0.4, 0.8, 1.0],
@@ -115,10 +119,10 @@ class _FuturisticRadarPainter extends CustomPainter {
 
     // 3. Draw middle dashed tracking circle
     final dashPaint = Paint()
-      ..color = color.withOpacity(0.2)
+      ..color = color.withValues(alpha: 0.2)
       ..strokeWidth = 1.0
       ..style = PaintingStyle.stroke;
-    
+
     final dashRect = Rect.fromCircle(center: center, radius: radius * 0.55);
     for (double i = 0; i < 360; i += 15) {
       canvas.drawArc(
@@ -133,9 +137,9 @@ class _FuturisticRadarPainter extends CustomPainter {
     // 4. Draw central pulsing glowing core
     final pulseScale = 0.85 + 0.15 * math.sin(progress * 4 * math.pi);
     final innerPaint = Paint()
-      ..color = color.withOpacity(0.15)
+      ..color = color.withValues(alpha: 0.15)
       ..style = PaintingStyle.fill;
-    
+
     final innerCoreRadius = radius * 0.3 * pulseScale;
     canvas.drawCircle(center, innerCoreRadius, innerPaint);
 

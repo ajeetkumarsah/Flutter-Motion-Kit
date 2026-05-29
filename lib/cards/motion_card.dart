@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../core/controllers/motion_controller.dart';
 
 class MotionCard extends StatefulWidget {
@@ -54,7 +55,7 @@ class _MotionCardState extends State<MotionCard>
     _resetController.stop();
     final centerX = size.width / 2;
     final centerY = size.height / 2;
-    
+
     // Normalized coordinates (-1.0 to 1.0)
     final dx = (details.localPosition.dx - centerX) / centerX;
     final dy = (details.localPosition.dy - centerY) / centerY;
@@ -91,14 +92,18 @@ class _MotionCardState extends State<MotionCard>
       // 3D Matrix perspective transformation based on cursor
       final transformMatrix = Matrix4.identity()
         ..setEntry(3, 2, 0.001) // perspective
-        ..rotateX(isReduced ? 0.0 : -_tiltOffset.dy * widget.maxTiltAngleX * 3.14 / 180)
-        ..rotateY(isReduced ? 0.0 : _tiltOffset.dx * widget.maxTiltAngleY * 3.14 / 180);
+        ..rotateX(isReduced
+            ? 0.0
+            : -_tiltOffset.dy * widget.maxTiltAngleX * 3.14 / 180)
+        ..rotateY(isReduced
+            ? 0.0
+            : _tiltOffset.dx * widget.maxTiltAngleY * 3.14 / 180);
 
       final baseCard = PhysicalModel(
         color: Colors.transparent,
         elevation: widget.elevation,
         borderRadius: BorderRadius.circular(widget.borderRadius),
-        shadowColor: widget.shadowColor ?? Colors.black.withOpacity(0.3),
+        shadowColor: widget.shadowColor ?? Colors.black.withValues(alpha: 0.3),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(widget.borderRadius),
           child: widget.child,

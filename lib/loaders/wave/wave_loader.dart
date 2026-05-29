@@ -1,12 +1,22 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../core/controllers/motion_controller.dart';
 
+/// A premium horizontal Equalizer soundwave bar loader.
+///
+/// Five vertical graphic chart bars oscillate up and down dynamically.
+/// Scales seamlessly inside a FittedBox to support tiny boundaries.
 class MotionWaveLoader extends StatefulWidget {
+  /// The active primary color of the Equalizer bars.
   final Color color;
+
+  /// The dimensional bounding size (width and height constraints) of the loader.
   final double size;
 
+  /// Creates a [MotionWaveLoader] instance.
   const MotionWaveLoader({
     super.key,
     required this.color,
@@ -25,7 +35,9 @@ class _MotionWaveLoaderState extends State<MotionWaveLoader>
   @override
   void initState() {
     super.initState();
-    final motion = Get.isRegistered<MotionController>() ? Get.find<MotionController>() : null;
+    final motion = Get.isRegistered<MotionController>()
+        ? Get.find<MotionController>()
+        : null;
     final speed = motion?.speedMultiplier ?? 1.0;
 
     _controller = AnimationController(
@@ -52,7 +64,7 @@ class _MotionWaveLoaderState extends State<MotionWaveLoader>
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(_barCount, (index) {
           final delay = index * 0.15;
-          
+
           return AnimatedBuilder(
             animation: _controller,
             builder: (context, child) {
@@ -70,7 +82,7 @@ class _MotionWaveLoaderState extends State<MotionWaveLoader>
                   borderRadius: BorderRadius.circular(barWidth / 2),
                   boxShadow: [
                     BoxShadow(
-                      color: widget.color.withOpacity(0.35),
+                      color: widget.color.withValues(alpha: 0.35),
                       blurRadius: 8,
                       spreadRadius: 1,
                     )

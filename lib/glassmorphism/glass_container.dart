@@ -1,6 +1,8 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../core/controllers/motion_controller.dart';
 import '../../core/theme/motion_colors.dart';
 
@@ -38,37 +40,42 @@ class MotionGlassContainer extends StatelessWidget {
         ? Get.find<MotionController>()
         : null;
 
-    final baseColor = color ?? (Theme.of(context).brightness == Brightness.dark
-        ? Colors.white
-        : Colors.black);
+    final baseColor = color ??
+        (Theme.of(context).brightness == Brightness.dark
+            ? Colors.white
+            : Colors.black);
 
-    final resolvedBorderColors = borderColors ?? [
-      MotionColors.primaryNeon.withOpacity(0.5),
-      MotionColors.secondaryNeon.withOpacity(0.2),
-    ];
+    final resolvedBorderColors = borderColors ??
+        [
+          MotionColors.primaryNeon.withValues(alpha: 0.5),
+          MotionColors.secondaryNeon.withValues(alpha: 0.2),
+        ];
 
     return Obx(() {
       final isPerformanceMode = motionController?.performanceMode ?? false;
 
       // Performance fallback: if performanceMode or reducedMotion is on, disable expensive BackdropFilter blur
       final activeBlur = isPerformanceMode ? 0.0 : blur;
-      final activeOpacity = isPerformanceMode ? opacity * 2.5 : opacity; // increase opacity to compensate for lack of blur
+      final activeOpacity = isPerformanceMode
+          ? opacity * 2.5
+          : opacity; // increase opacity to compensate for lack of blur
 
       Widget container = Container(
         width: width,
         height: height,
         padding: padding ?? const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          color: baseColor.withOpacity(activeOpacity),
+          color: baseColor.withValues(alpha: activeOpacity),
           borderRadius: BorderRadius.circular(borderRadius),
-          border: border ?? Border.all(
-            color: baseColor.withOpacity(0.15),
-            width: borderWidth,
-          ),
+          border: border ??
+              Border.all(
+                color: baseColor.withValues(alpha: 0.15),
+                width: borderWidth,
+              ),
           boxShadow: [
             if (activeBlur > 0)
               BoxShadow(
-                color: Colors.black.withOpacity(0.08),
+                color: Colors.black.withValues(alpha: 0.08),
                 blurRadius: 24,
                 spreadRadius: -8,
               ),

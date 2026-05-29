@@ -1,0 +1,27 @@
+name: flutter_motion_kit_example
+description: "Demonstrates how to use the flutter_motion_kit package to build high-performance, premium animations."
+publish_to: 'none'
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_motion_kit:
+    path: ../
+  get: ^4.6.6
+  cupertino_icons: ^1.0.8
+  shimmer: ^3.0.0
+  lottie: ^3.1.2
+  flutter_animate: ^4.5.0
+  animated_text_kit: ^4.2.2
+  vector_math: ^2.1.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-// Import our central exports
-import 'flutter_motion_kit.dart';
+// Import our package exports
+import 'package:flutter_motion_kit/flutter_motion_kit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

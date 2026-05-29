@@ -1,6 +1,8 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../core/controllers/motion_controller.dart';
 import '../core/theme/motion_colors.dart';
 
@@ -57,7 +59,7 @@ class _MotionAuroraBackgroundState extends State<MotionAuroraBackground>
           children: [
             // Dark night background base
             Container(color: MotionColors.darkBackground),
-            
+
             // Dynamic fluid blur blobs
             if (!performanceMode)
               AnimatedBuilder(
@@ -85,14 +87,16 @@ class _MotionAuroraBackgroundState extends State<MotionAuroraBackground>
                             shape: BoxShape.circle,
                             gradient: RadialGradient(
                               colors: [
-                                MotionColors.secondaryNeon.withOpacity(0.35),
-                                MotionColors.secondaryNeon.withOpacity(0.0),
+                                MotionColors.secondaryNeon
+                                    .withValues(alpha: 0.35),
+                                MotionColors.secondaryNeon
+                                    .withValues(alpha: 0.0),
                               ],
                             ),
                           ),
                         ),
                       ),
-                      
+
                       // Blob 2: Cyber Blue/Cyan
                       Positioned(
                         bottom: -70 + yOffset2,
@@ -104,8 +108,9 @@ class _MotionAuroraBackgroundState extends State<MotionAuroraBackground>
                             shape: BoxShape.circle,
                             gradient: RadialGradient(
                               colors: [
-                                MotionColors.primaryNeon.withOpacity(0.35),
-                                MotionColors.primaryNeon.withOpacity(0.0),
+                                MotionColors.primaryNeon
+                                    .withValues(alpha: 0.35),
+                                MotionColors.primaryNeon.withValues(alpha: 0.0),
                               ],
                             ),
                           ),
@@ -123,8 +128,8 @@ class _MotionAuroraBackgroundState extends State<MotionAuroraBackground>
                             shape: BoxShape.circle,
                             gradient: RadialGradient(
                               colors: [
-                                MotionColors.accentNeon.withOpacity(0.25),
-                                MotionColors.accentNeon.withOpacity(0.0),
+                                MotionColors.accentNeon.withValues(alpha: 0.25),
+                                MotionColors.accentNeon.withValues(alpha: 0.0),
                               ],
                             ),
                           ),

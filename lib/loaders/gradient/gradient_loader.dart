@@ -1,6 +1,8 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../core/controllers/motion_controller.dart';
 
 class MotionGradientRotatingLoader extends StatefulWidget {
@@ -18,14 +20,17 @@ class MotionGradientRotatingLoader extends StatefulWidget {
       _MotionGradientRotatingLoaderState();
 }
 
-class _MotionGradientRotatingLoaderState extends State<MotionGradientRotatingLoader>
+class _MotionGradientRotatingLoaderState
+    extends State<MotionGradientRotatingLoader>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
-    final motion = Get.isRegistered<MotionController>() ? Get.find<MotionController>() : null;
+    final motion = Get.isRegistered<MotionController>()
+        ? Get.find<MotionController>()
+        : null;
     final speed = motion?.speedMultiplier ?? 1.0;
 
     _controller = AnimationController(
@@ -79,9 +84,9 @@ class _GradientRingPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..shader = SweepGradient(
         colors: [
-          color.withOpacity(0.0),
-          color.withOpacity(0.2),
-          color.withOpacity(0.6),
+          color.withValues(alpha: 0.0),
+          color.withValues(alpha: 0.2),
+          color.withValues(alpha: 0.6),
           color,
         ],
         stops: const [0.0, 0.3, 0.7, 1.0],
@@ -93,12 +98,12 @@ class _GradientRingPainter extends CustomPainter {
     final dotPaint = Paint()
       ..color = Colors.white
       ..style = PaintingStyle.fill;
-    
+
     // Draw dot at 0 degrees / sweep completion position (which is right center Offset(radius, 0))
     canvas.drawCircle(Offset(center.dx + radius, center.dy), 3.0, dotPaint);
 
     final glowPaint = Paint()
-      ..color = color.withOpacity(0.8)
+      ..color = color.withValues(alpha: 0.8)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4);
     canvas.drawCircle(Offset(center.dx + radius, center.dy), 5.0, glowPaint);
   }

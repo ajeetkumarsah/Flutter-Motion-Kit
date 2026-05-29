@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 class MotionLiquidLoader extends StatefulWidget {
@@ -48,7 +49,7 @@ class _MotionLiquidLoaderState extends State<MotionLiquidLoader>
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: widget.color.withOpacity(0.3),
+                  color: widget.color.withValues(alpha: 0.3),
                   width: 3.0,
                 ),
               ),
@@ -93,7 +94,7 @@ class _LiquidPainter extends CustomPainter {
 
     // Draw base background container tint
     final bgPaint = Paint()
-      ..color = color.withOpacity(0.08)
+      ..color = color.withValues(alpha: 0.08)
       ..style = PaintingStyle.fill;
     canvas.drawPaint(bgPaint);
 
@@ -101,7 +102,7 @@ class _LiquidPainter extends CustomPainter {
     final path2 = Path();
 
     // Constant 50% water fill level height
-    final waterHeight = size.height * 0.52; 
+    final waterHeight = size.height * 0.52;
 
     path1.moveTo(0, size.height);
     path2.moveTo(0, size.height);
@@ -112,7 +113,9 @@ class _LiquidPainter extends CustomPainter {
       final y1 = waterHeight + 6 * math.sin(angle1);
       path1.lineTo(x, y1);
 
-      final angle2 = (x / size.width * 2 * math.pi) - (progress * 2 * math.pi) + (math.pi / 2);
+      final angle2 = (x / size.width * 2 * math.pi) -
+          (progress * 2 * math.pi) +
+          (math.pi / 2);
       final y2 = waterHeight + 5 * math.sin(angle2);
       path2.lineTo(x, y2);
     }
@@ -125,7 +128,7 @@ class _LiquidPainter extends CustomPainter {
 
     // Render both waves overlapping for a beautiful fluid depth
     final wavePaint = Paint()
-      ..color = color.withOpacity(0.5)
+      ..color = color.withValues(alpha: 0.5)
       ..style = PaintingStyle.fill;
     canvas.drawPath(path2, wavePaint);
     canvas.drawPath(path1, paint);

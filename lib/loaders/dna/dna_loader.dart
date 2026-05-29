@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 class MotionDnaLoader extends StatefulWidget {
@@ -89,7 +90,7 @@ class _DnaPainter extends CustomPainter {
 
       // Draw connecting rung lines (only if they are somewhat visible/not overlapping too much)
       final connectorPaint = Paint()
-        ..color = color.withOpacity(0.2)
+        ..color = color.withValues(alpha: 0.2)
         ..strokeWidth = 1.5;
       canvas.drawLine(Offset(x, yA), Offset(x, yB), connectorPaint);
 
