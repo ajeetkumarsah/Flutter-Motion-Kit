@@ -11,7 +11,8 @@ class ResponsiveUtils {
   static bool isDesktop(BuildContext context) =>
       MediaQuery.of(context).size.width >= 1200;
 
-  static double adaptiveSize(BuildContext context, {
+  static double adaptiveSize(
+    BuildContext context, {
     required double mobile,
     double? tablet,
     double? desktop,

@@ -1406,7 +1406,7 @@ MotionLoader(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
+                    children: [
                       Text('MOTIONKIT PLATINUM',
                           style: TextStyle(
                               fontSize: 11,

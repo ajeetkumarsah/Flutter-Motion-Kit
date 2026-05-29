@@ -67,7 +67,7 @@ class _DnaPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final centerY = size.height / 2;
-    final dotCount = 8;
+    const dotCount = 8;
     final maxAmplitude = size.height * 0.35;
     final paddingX = size.width * 0.1;
     final activeWidth = size.width - (paddingX * 2);

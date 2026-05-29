@@ -43,6 +43,9 @@ class MotionController extends GetxController {
     if (reducedMotion) {
       return Duration.zero; // Or highly minimized crossfade timing
     }
-    return Duration(milliseconds: (baseDuration.inMilliseconds * (1 / _speedMultiplier.value)).round());
+    return Duration(
+        milliseconds:
+            (baseDuration.inMilliseconds * (1 / _speedMultiplier.value))
+                .round());
   }
 }

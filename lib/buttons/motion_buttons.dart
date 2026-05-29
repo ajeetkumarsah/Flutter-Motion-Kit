@@ -401,7 +401,7 @@ class _RipplePainter extends CustomPainter {
     final opacity = (1.0 - t).clamp(0.0, 1.0);
 
     final paint = Paint()
-      ..color = color.withValues(alpha: opacity * color.opacity)
+      ..color = color.withValues(alpha: opacity * color.a)
       ..style = PaintingStyle.fill;
 
     canvas.drawCircle(offset, currentRadius, paint);

@@ -14,24 +14,34 @@ import 'gradient/gradient_loader.dart';
 enum MotionLoaderType {
   /// A horizontal sequence of three bouncing dots.
   dots,
+
   /// A messaging bubble scale-and-fade three-dot typing indicator.
   typing,
+
   /// Concentric circular rings expanding outwards in a radar pulse.
   pulse,
+
   /// A central core nucleus with orbiting planetary satellite nodes.
   orbit,
+
   /// A vertical double-helix strand oscillating with 3D depth perception.
   dna,
+
   /// A glowing neural network intelligence core pulsing and sparking synapse nodes.
   ai,
+
   /// A circular fluid container filled with moving sinusoidal canvas waves.
   liquid,
+
   /// A vertical Equalizer style soundwave bar oscillation graph.
   wave,
+
   /// A high-tech circular scifi radar grid sweep disc.
   futuristic,
+
   /// Monospace terminal drop-chain digital code rain cascading downwards.
   matrix,
+
   /// Dual counter-rotating sweeping sweep gradient neon rings.
   gradientRotating,
 }
@@ -93,4 +103,3 @@ class MotionLoader extends StatelessWidget {
     }
   }
 }
-

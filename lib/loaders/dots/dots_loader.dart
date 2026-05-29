@@ -154,7 +154,7 @@ class _MotionTypingIndicatorState extends State<MotionTypingIndicator>
                 width: dotSize,
                 height: dotSize,
                 margin: EdgeInsets.symmetric(horizontal: spacing),
-                transform: Matrix4.identity()..scale(scale),
+                transform: Matrix4.diagonal3Values(scale, scale, 1.0),
                 decoration: BoxDecoration(
                   color:
                       widget.color.withValues(alpha: opacity.clamp(0.2, 1.0)),

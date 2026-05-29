@@ -89,7 +89,7 @@ class _OrbitPainter extends CustomPainter {
     canvas.drawCircle(center, orbitRadius, orbitLinePaint);
 
     // 3. Draw planets revolving along the orbit (with delays)
-    final planetCount = 3;
+    const planetCount = 3;
     for (int i = 0; i < planetCount; i++) {
       final delay = i * (2 * math.pi / planetCount);
       final angle = (progress * 2 * math.pi) + delay;

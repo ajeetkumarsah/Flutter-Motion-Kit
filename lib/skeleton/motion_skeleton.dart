@@ -56,13 +56,13 @@ class MotionSkeleton extends StatelessWidget {
         children: [
           MotionSkeleton.circular(size: avatarSize),
           const SizedBox(width: 16),
-          Expanded(
+          const Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const MotionSkeleton.rectangle(width: 140, height: 16),
-                const SizedBox(height: 8),
+                MotionSkeleton.rectangle(width: 140, height: 16),
+                SizedBox(height: 8),
                 MotionSkeleton.rectangle(width: double.infinity, height: 12),
               ],
             ),
@@ -73,19 +73,20 @@ class MotionSkeleton extends StatelessWidget {
   }
 
   static Widget card() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return const Padding(
+      padding: EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          const MotionSkeleton.rectangle(width: double.infinity, height: 180, borderRadius: 12),
-          const SizedBox(height: 12),
-          const MotionSkeleton.rectangle(width: 200, height: 20),
-          const SizedBox(height: 8),
+          MotionSkeleton.rectangle(
+              width: double.infinity, height: 180, borderRadius: 12),
+          SizedBox(height: 12),
+          MotionSkeleton.rectangle(width: 200, height: 20),
+          SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               MotionSkeleton.rectangle(width: 100, height: 12),
               MotionSkeleton.rectangle(width: 60, height: 12),
             ],
@@ -105,25 +106,27 @@ class MotionSkeleton extends StatelessWidget {
   }
 
   static Widget chat() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return const Padding(
+      padding: EdgeInsets.all(16.0),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const MotionSkeleton.circular(size: 40),
-              const SizedBox(width: 12),
-              const MotionSkeleton.rectangle(width: 180, height: 40, borderRadius: 16),
+              MotionSkeleton.circular(size: 40),
+              SizedBox(width: 12),
+              MotionSkeleton.rectangle(
+                  width: 180, height: 40, borderRadius: 16),
             ],
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const MotionSkeleton.rectangle(width: 150, height: 40, borderRadius: 16),
-              const SizedBox(width: 12),
-              const MotionSkeleton.circular(size: 40),
+              MotionSkeleton.rectangle(
+                  width: 150, height: 40, borderRadius: 16),
+              SizedBox(width: 12),
+              MotionSkeleton.circular(size: 40),
             ],
           ),
         ],

@@ -83,7 +83,7 @@ class _FuturisticRadarPainter extends CustomPainter {
       ..strokeWidth = 1.5
       ..style = PaintingStyle.stroke;
 
-    final tickCount = 24;
+    const tickCount = 24;
     final tickLength = radius * 0.08;
     for (int i = 0; i < tickCount; i++) {
       final angle = (i * 2 * math.pi / tickCount);

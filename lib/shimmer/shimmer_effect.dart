@@ -29,7 +29,9 @@ class MotionShimmer extends StatelessWidget {
 
     // Default premium gradients
     final baseColors = colors ??
-        (isDark ? MotionColors.darkShimmerColors : MotionColors.lightShimmerColors);
+        (isDark
+            ? MotionColors.darkShimmerColors
+            : MotionColors.lightShimmerColors);
 
     return Obx(() {
       final isReduced = motionController?.reducedMotion ?? false;

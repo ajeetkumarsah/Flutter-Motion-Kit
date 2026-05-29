@@ -172,7 +172,7 @@ class _LiquidClipper extends CustomClipper<Path> {
     // Draw wavy line from top to bottom
     // Dampen amplitude as progress approaches 0.0 and 1.0
     final waveAmplitude = size.width * 0.1 * math.sin(progress * math.pi);
-    final wavePoints = 40;
+    const wavePoints = 40;
 
     for (int i = 1; i <= wavePoints; i++) {
       final y = size.height * (i / wavePoints);

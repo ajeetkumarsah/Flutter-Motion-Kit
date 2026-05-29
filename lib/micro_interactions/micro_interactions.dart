@@ -113,7 +113,7 @@ class _LikeBurstPainter extends CustomPainter {
     final paint = Paint()..style = PaintingStyle.fill;
 
     // Draw little burst sparks revolving outwards
-    final sparkCount = 7;
+    const sparkCount = 7;
     final maxDistance = size.width * 0.9;
     final currentDistance = maxDistance * burst;
     final opacity = 1.0 - burst;

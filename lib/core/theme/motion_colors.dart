@@ -16,7 +16,7 @@ class MotionColors {
   static const Color accentNeon = Color(0xFF7B2CBF); // Purple
   static const Color electricBlue = Color(0xFF007BFF);
   static const Color deepSpace = Color(0xFF120E2E);
-  
+
   // Status Colors
   static const Color success = Color(0xFF00E676);
   static const Color error = Color(0xFFFF1744);

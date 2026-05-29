@@ -59,7 +59,6 @@ class MotionThemeData {
       colorScheme: base.colorScheme.copyWith(
         primary: primaryColor,
         secondary: secondaryColor,
-        background: backgroundColor,
         surface: surfaceColor,
       ),
     );
@@ -100,7 +99,8 @@ class MotionTheme extends InheritedWidget {
   });
 
   static MotionThemeData of(BuildContext context) {
-    final MotionTheme? result = context.dependOnInheritedWidgetOfExactType<MotionTheme>();
+    final MotionTheme? result =
+        context.dependOnInheritedWidgetOfExactType<MotionTheme>();
     return result?.data ?? MotionThemeData.dark();
   }
 

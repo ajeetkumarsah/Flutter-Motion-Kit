@@ -15,7 +15,8 @@ void main() {
       Get.reset();
     });
 
-    testWidgets('MotionLoader Wave and Matrix Render Tests', (WidgetTester tester) async {
+    testWidgets('MotionLoader Wave and Matrix Render Tests',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
@@ -37,7 +38,8 @@ void main() {
       expect(find.byType(MotionFuturisticLoader), findsOneWidget);
     });
 
-    testWidgets('MotionButton Tap & Custom Ripple Render Tests', (WidgetTester tester) async {
+    testWidgets('MotionButton Tap & Custom Ripple Render Tests',
+        (WidgetTester tester) async {
       bool tapped = false;
 
       await tester.pumpWidget(
@@ -64,7 +66,8 @@ void main() {
       expect(tapped, isTrue);
     });
 
-    testWidgets('MotionGlassContainer & MotionSkeleton Render Tests', (WidgetTester tester) async {
+    testWidgets('MotionGlassContainer & MotionSkeleton Render Tests',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -79,7 +82,8 @@ void main() {
       );
 
       expect(find.byType(MotionGlassContainer), findsOneWidget);
-      expect(find.byType(MotionSkeleton), findsNWidgets(3)); // Avatar + 2 Rectangle lines
+      expect(find.byType(MotionSkeleton),
+          findsNWidgets(3)); // Avatar + 2 Rectangle lines
     });
   });
 }

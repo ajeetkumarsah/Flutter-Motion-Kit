@@ -35,7 +35,8 @@ class MotionThemeController extends GetxController {
   }
 
   void changeAccentGradient(LinearGradient gradient) {
-    _currentTheme.value = _currentTheme.value.copyWith(accentGradient: gradient);
+    _currentTheme.value =
+        _currentTheme.value.copyWith(accentGradient: gradient);
     update();
   }
 
