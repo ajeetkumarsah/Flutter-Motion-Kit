@@ -1,0 +1,38 @@
+name: Flutter Motion Kit CI/CD 🚀
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code 📥
+        uses: actions/checkout@v3
+
+      - name: Setup Java ☕
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '12.x'
+
+      - name: Setup Flutter 🛠️
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Install Dependencies 📦
+        run: flutter pub get
+
+      - name: Format Verification 🎨
+        run: flutter format --set-exit-if-changed lib/ test/
+
+      - name: Code Static Analysis 🔍
+        run: flutter analyze
+
+      - name: Run Automated Tests 🧪
+        run: flutter test

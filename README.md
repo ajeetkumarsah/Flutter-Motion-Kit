@@ -75,7 +75,10 @@ dependencies:
 
 ## 📐 API Showcase & Component Dictionary
 
-Here is the complete reference dictionary covering **each and every widget** available in `flutter_motion_kit` along with their key parameters, descriptions, and clean copy-pasteable usage examples.
+Here is the complete reference dictionary covering **each and every widget** available in `flutter_motion_kit` along with their key parameters, descriptions, copy-pasteable usage examples, and their visual GIF asset paths.
+
+> [!NOTE]
+> All GIF references utilize relative repository paths (`assets/gifs/[widget_name].gif`). When you commit recorded preview GIFs from your emulator into your repository's `assets/gifs/` directory, both GitHub and pub.dev will automatically resolve and display the animated widgets!
 
 ---
 
@@ -112,6 +115,8 @@ Here is the complete reference dictionary covering **each and every widget** ava
 ### 2. Interactive Background Shaders
 
 #### `MotionAuroraBackground`
+*   **Visual Preview**:
+    ![Motion Aurora Background](assets/gifs/motion_aurora_background.gif)
 *   **Description**: A high-end background layer that renders floating, multi-colored liquid aurora gaseous meshes. Animates dynamically utilizing high-performance sinus shaders with low CPU load.
 *   **Usage**:
     ```dart
@@ -125,6 +130,8 @@ Here is the complete reference dictionary covering **each and every widget** ava
     *   `child`: Nested overlay content widgets (optional).
 
 #### `MotionParticleBackground`
+*   **Visual Preview**:
+    ![Motion Particle Background](assets/gifs/motion_particle_background.gif)
 *   **Description**: A live particle physics field. Particles float, bounce, and drift randomly. Interactive tap inputs act as gravity points, drawing particles in before dispersing them outward.
 *   **Usage**:
     ```dart
@@ -144,6 +151,8 @@ Here is the complete reference dictionary covering **each and every widget** ava
 All 11 loaders can be resolved dynamically via the unified `MotionLoader` router or instantiated individually. They automatically adapt sizes and margins to prevent layout overflows and respect global speed settings.
 
 #### `MotionLoader` (Unified Router)
+*   **Visual Preview**:
+    ![Unified Motion Loader](assets/gifs/motion_loader.gif)
 *   **Description**: Centralized loading dispatcher. Resolves and returns any of the 11 loader types based on the `MotionLoaderType` enum.
 *   **Usage**:
     ```dart
@@ -160,6 +169,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     *   `strokeWidth`: Line stroke dimensions where applicable.
 
 #### `MotionDotsLoader`
+*   **Visual Preview**:
+    ![Motion Dots Loader](assets/gifs/motion_dots_loader.gif)
 *   **Description**: A horizontal three-dot loading widget. Dots bounce vertically in a sinusoidal wave sequence. Fully wrapped inside a `FittedBox` to guarantee zero layout overflows on tight button bounds.
 *   **Usage**:
     ```dart
@@ -170,6 +181,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     ```
 
 #### `MotionTypingIndicator`
+*   **Visual Preview**:
+    ![Motion Typing Indicator](assets/gifs/motion_typing_indicator.gif)
 *   **Description**: A messaging-style bubble typing indicator. Dots scale up/down and fade in/out sequentially, mirroring modern chat activity screens.
 *   **Usage**:
     ```dart
@@ -180,6 +193,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     ```
 
 #### `MotionPulseLoader`
+*   **Visual Preview**:
+    ![Motion Pulse Loader](assets/gifs/motion_pulse_loader.gif)
 *   **Description**: Concentric circular rings expanding outwards from a central point. Implements custom opacity fades mimicking radar pings.
 *   **Usage**:
     ```dart
@@ -190,6 +205,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     ```
 
 #### `MotionOrbitLoader`
+*   **Visual Preview**:
+    ![Motion Orbit Loader](assets/gifs/motion_orbit_loader.gif)
 *   **Description**: A central core nucleus with orbiting planetary satellite nodes revolving in circular patterns. Calculates coordinates dynamically via trigonometry.
 *   **Usage**:
     ```dart
@@ -200,6 +217,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     ```
 
 #### `MotionDnaLoader`
+*   **Visual Preview**:
+    ![Motion DNA Loader](assets/gifs/motion_dna_loader.gif)
 *   **Description**: Renders a vertical double-helix strand model. Helix nodes oscillate along sine and cosine curves to project realistic 3D depth perception.
 *   **Usage**:
     ```dart
@@ -210,6 +229,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     ```
 
 #### `MotionAiLoader`
+*   **Visual Preview**:
+    ![Motion AI Loader](assets/gifs/motion_ai_loader.gif)
 *   **Description**: Represents a glowing neural intelligence core. Radiant light pulses from the center and sparks secondary brain synapse node connections.
 *   **Usage**:
     ```dart
@@ -220,6 +241,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     ```
 
 #### `MotionLiquidLoader`
+*   **Visual Preview**:
+    ![Motion Liquid Loader](assets/gifs/motion_liquid_loader.gif)
 *   **Description**: A circular container filled with liquid fluid waves. Waves crest, fill, and slide dynamically using canvas paint curves.
 *   **Usage**:
     ```dart
@@ -230,6 +253,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     ```
 
 #### `MotionWaveLoader`
+*   **Visual Preview**:
+    ![Motion Wave Loader](assets/gifs/motion_wave_loader.gif)
 *   **Description**: Five vertical sound-bar graphs oscillating up/down in a clean equalizer pattern. Fully fitted to scale safely on micro-columns.
 *   **Usage**:
     ```dart
@@ -240,6 +265,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     ```
 
 #### `MotionFuturisticLoader`
+*   **Visual Preview**:
+    ![Motion Futuristic Loader](assets/gifs/motion_futuristic_loader.gif)
 *   **Description**: Renders a circular scifi radar scanning grid. A linear gradient sector sweeps 360 degrees, leaving a fading tracking glow.
 *   **Usage**:
     ```dart
@@ -250,6 +277,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     ```
 
 #### `MotionMatrixLoader`
+*   **Visual Preview**:
+    ![Motion Matrix Loader](assets/gifs/motion_matrix_loader.gif)
 *   **Description**: Cascading green terminal monospace code characters drifting downwards. Translates string drops on individual streams to render high-performance cyber-rain.
 *   **Usage**:
     ```dart
@@ -260,6 +289,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     ```
 
 #### `MotionGradientRotatingLoader`
+*   **Visual Preview**:
+    ![Motion Gradient Rotating Loader](assets/gifs/motion_gradient_rotating_loader.gif)
 *   **Description**: Dual neon arc rings spinning in opposite directions, painted with harmonic sweep gradients.
 *   **Usage**:
     ```dart
@@ -274,6 +305,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
 ### 4. Interactive Action Controls
 
 #### `MotionButton`
+*   **Visual Preview**:
+    ![Motion Button Actions](assets/gifs/motion_button.gif)
 *   **Description**: A tactile, feedback-rich click action control. Supports magnetic physical pulls, pointer displacement springs, neon glowing blurs, scale bounces, or touch-expanding canvas custom ripples.
 *   **Usage**:
     ```dart
@@ -291,6 +324,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     *   `child`: Button label text or icons.
 
 #### `MotionExpandableFab`
+*   **Visual Preview**:
+    ![Motion Expandable FAB](assets/gifs/motion_expandable_fab.gif)
 *   **Description**: Premium Speed Dial Floating Action Button. When tapped, it rolls out a modular fan list of child action options in radial orbits.
 *   **Usage**:
     ```dart
@@ -309,6 +344,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     *   `children`: Stack of action buttons to expand/reveal.
 
 #### `MotionMorphingButton`
+*   **Visual Preview**:
+    ![Motion Morphing Button](assets/gifs/motion_morphing_button.gif)
 *   **Description**: An advanced material-state action button. Takes an asynchronous operation, shrinks boundaries, and morphs from a standard button shape into a progress liquid-loader, and subsequently transitions into a success checkmark or error cross.
 *   **Usage**:
     ```dart
@@ -328,6 +365,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     *   `child`: Center label when idle.
 
 #### `MotionRefreshIndicator`
+*   **Visual Preview**:
+    ![Motion Refresh Indicator](assets/gifs/motion_refresh_indicator.gif)
 *   **Description**: A customized pull-to-refresh list layout. As you pull, it fills up a liquid wave container; when refreshing, it rotates dynamic sci-fi orbits until the async function completes.
 *   **Usage**:
     ```dart
@@ -348,6 +387,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
 ### 5. Micro-Interactions
 
 #### `MotionLikeButton`
+*   **Visual Preview**:
+    ![Motion Like Button](assets/gifs/motion_like_button.gif)
 *   **Description**: Popping interaction button. Tapping scale-bounces the heart icon and shoots dynamic paint droplets outwards in a circular splash burst.
 *   **Usage**:
     ```dart
@@ -363,6 +404,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     *   `onChanged`: Callback reporting new state value.
 
 #### `MotionAnimatedCheckmark`
+*   **Visual Preview**:
+    ![Motion Animated Checkmark](assets/gifs/motion_animated_checkmark.gif)
 *   **Description**: Smooth vector checkmark draw interaction. Tapping paints a circular baseline and animates the completion of the vector check icon stroke dynamically.
 *   **Usage**:
     ```dart
@@ -376,6 +419,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     *   `color`: Stroke outline color.
 
 #### `MotionLiquidToggle`
+*   **Visual Preview**:
+    ![Motion Liquid Toggle](assets/gifs/motion_liquid_toggle.gif)
 *   **Description**: An organic toggle switch. Sliding changes background colors and applies gaseous liquid distortion filters to boundary shapes as they drag.
 *   **Usage**:
     ```dart
@@ -389,6 +434,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     *   `onChanged`: Callback reporting updated boolean.
 
 #### `MotionBookmarkButton`
+*   **Visual Preview**:
+    ![Motion Bookmark Button](assets/gifs/motion_bookmark_button.gif)
 *   **Description**: An elastic ribbon selector interaction. Tapping slides the ribbon down and morphs its geometry from an outline flag to a filled block.
 *   **Usage**:
     ```dart
@@ -403,6 +450,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
 ### 6. Cards, Morphings, Glass & Placeholders
 
 #### `MotionCard`
+*   **Visual Preview**:
+    ![Motion Card 3D Tilt](assets/gifs/motion_card.gif)
 *   **Description**: A 3D pointer-tracking perspective card. Listens to drag gestures (on mobile) or hover movements (on web/desktop) and tilts boundaries in three-dimensional space, projecting a glowing sweeping light reflection.
 *   **Usage**:
     ```dart
@@ -418,6 +467,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     *   `shadowColor`: Directional backing shadow color.
 
 #### `MotionMorphContainer`
+*   **Visual Preview**:
+    ![Motion Morph Container](assets/gifs/motion_morph_container.gif)
 *   **Description**: Interactive geometric container. Animates its boundary sizes, border radii, linear gradients, and back shadows cleanly when layout structures change.
 *   **Usage**:
     ```dart
@@ -437,6 +488,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     *   `child`: Internal child node to swap.
 
 #### `MotionGlassContainer`
+*   **Visual Preview**:
+    ![Motion Glass Container](assets/gifs/motion_glass_container.gif)
 *   **Description**: A high-end glassmorphic panel. Implements a frosted backdrop filter and paints dynamic sweeping neon borders. Automatically turns off frosted blurs on low-performance devices to guarantee high refresh rates.
 *   **Usage**:
     ```dart
@@ -455,6 +508,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     *   `borderColors`: Neon sweeping border gradient array.
 
 #### `MotionSkeleton`
+*   **Visual Preview**:
+    ![Motion Skeleton Glow](assets/gifs/motion_skeleton.gif)
 *   **Description**: Place-holder loading block designed for skeletons. Pulses high-performance neon highlights smoothly.
 *   **Usage**:
     ```dart
@@ -466,6 +521,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
     ```
 
 #### `MotionShimmer`
+*   **Visual Preview**:
+    ![Motion Shimmer Effect](assets/gifs/motion_shimmer.gif)
 *   **Description**: Slide sweeping shimmer light. Casts linear sliding highlights from left to right over any widget tree child.
 *   **Usage**:
     ```dart
@@ -479,6 +536,8 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
 ### 7. Custom Route Transitions
 
 #### `MotionTransition`
+*   **Visual Preview**:
+    ![Motion Transition Routes](assets/gifs/motion_transition.gif)
 *   **Description**: Helper containing static custom routing transition methods. Swaps scaffolding routes smoothly.
 *   **Usage**:
     ```dart
@@ -517,5 +576,3 @@ We welcome contributions! Please review our [Contributing Guidelines](file:///CO
 ## 📄 License
 
 This project is licensed under the MIT License — see the [LICENSE](file:///LICENSE) file for details.
-# Flutter-Motion-Kit
-# Flutter-Motion-Kit

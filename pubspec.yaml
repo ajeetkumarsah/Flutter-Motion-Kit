@@ -1,0 +1,28 @@
+name: flutter_motion_kit
+description: "A centralized, high-performance animation and loader ecosystem for Flutter, managed via GetX. Exposes premium loaders, skeletons, glassmorphism, 3D tilt cards, custom page transitions, and interactive backgrounds."
+version: 1.0.0
+homepage: https://github.com/flutter-motion-kit/flutter_motion_kit
+repository: https://github.com/flutter-motion-kit/flutter_motion_kit
+issue_tracker: https://github.com/flutter-motion-kit/flutter_motion_kit/issues
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  get: ^4.6.6
+  shimmer: ^3.0.0
+  lottie: ^3.1.2
+  flutter_animate: ^4.5.0
+  animated_text_kit: ^4.2.2
+  vector_math: ^2.1.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
