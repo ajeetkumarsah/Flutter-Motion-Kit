@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2026-05-29
+
+### Added
+- Created a standard package example project under `example/` demonstrating the comprehensive cyberpunk SaaS dashboard to maximize pub.dev scores.
+- Added extensive Dartdoc comments (`///`) to all major public API components, properties, and constructors (such as `MotionLoader`, `MotionAiLoader`, `MotionDotsLoader`, `MotionWaveLoader`, and `MotionTypingIndicator`), exceeding the 20% completeness target.
+- Added visual relative GIF demonstration assets for all 25+ components in `README.md`.
+
+### Fixed
+- **RenderFlex Layout Overflows**: Wrapped horizontal `Row` layout nodes inside `MotionDotsLoader`, `MotionTypingIndicator`, and `MotionWaveLoader` in `FittedBox` widgets to scale dynamically and prevent overflows under tight constraints.
+- **Morph Container Vertical Overflow**: Wrapped the case 2 Column in `FittedBox(fit: BoxFit.scaleDown)` and applied `MainAxisSize.min` to prevent transitional 9.6px bottom layout overflows.
+- **Dots Lifecycle Fix**: Corrected a state management bug inside `_MotionDotsLoaderState.dispose()` where `super.initState()` was mistakenly called instead of `super.dispose()`.
+- **Static Analysis Cleared**: Resolved all 26 deprecation, unused import, and lint warnings (including modern `.a` alpha colors, diagonal3Values transforms, and const constructor skeleton scopes) to achieve a pristine analysis score.
+- **Pubspec Optimization**: Shortened package description to exactly 154 characters.
+
 ## [1.0.0] - 2026-05-29
 
 ### Added
