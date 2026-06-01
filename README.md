@@ -7,7 +7,11 @@
 
 A centralized, production-grade Flutter animation and loader library powered by GetX. Exposes premium loaders, custom-painted skeletons, frosted glassmorphism containers, 3D pointer-tracking cards, liquid-swipe page transitions, and interactive particle background effects under a single unified API.
 
-✨ **Try the Interactive Web Dashboard:** [https://flutter-motion-kit.web.app/](https://flutter-motion-kit.web.app/)
+<p align="center">
+  <a href="https://flutter-motion-kit.web.app/">
+    <img src="assets/loaders/live_preview_button.svg" width="320" alt="⚡ Try Interactive Dashboard" />
+  </a>
+</p>
 
 Designed for high-performance (smooth 60fps/120fps), complete accessibility compliance (vestibular reduce-motion triggers), and absolute ease-of-use.
 
