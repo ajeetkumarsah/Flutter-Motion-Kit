@@ -174,343 +174,173 @@ All 11 loaders can be resolved dynamically via the unified `MotionLoader` router
   - `size`: Bounding box dimensions (width & height).
   - `strokeWidth`: Line stroke dimensions where applicable.
 
-#### `MotionDotsLoader`
 
-- **Visual Preview**:
-  ![Motion Dots Loader](assets/gifs/motion_dots_loader.gif)
-- **Description**: A horizontal three-dot loading widget. Dots bounce vertically in a sinusoidal wave sequence. Fully wrapped inside a `FittedBox` to guarantee zero layout overflows on tight button bounds.
-- **Usage**:
-  ```dart
-  MotionDotsLoader(
-    color: Colors.cyan,
-    size: 32.0,
-  )
-  ```
+#### 📦 Standard Loaders Grid
 
-#### `MotionTypingIndicator`
+Exposes 11 standard high-performance loader presets. You can instantiate them directly (e.g. `MotionDotsLoader(...)`) or through the unified `MotionLoader(type: MotionLoaderType.dots, ...)` constructor.
 
-- **Visual Preview**:
-  ![Motion Typing Indicator](assets/gifs/motion_typing_indicator.gif)
-- **Description**: A messaging-style bubble typing indicator. Dots scale up/down and fade in/out sequentially, mirroring modern chat activity screens.
-- **Usage**:
-  ```dart
-  MotionTypingIndicator(
-    color: Colors.grey,
-    size: 28.0,
-  )
-  ```
-
-#### `MotionPulseLoader`
-
-- **Visual Preview**:
-  ![Motion Pulse Loader](assets/gifs/motion_pulse_loader.gif)
-- **Description**: Concentric circular rings expanding outwards from a central point. Implements custom opacity fades mimicking radar pings.
-- **Usage**:
-  ```dart
-  MotionPulseLoader(
-    color: Colors.tealAccent,
-    size: 50.0,
-  )
-  ```
-
-#### `MotionOrbitLoader`
-
-- **Visual Preview**:
-  ![Motion Orbit Loader](assets/gifs/motion_orbit_loader.gif)
-- **Description**: A central core nucleus with orbiting planetary satellite nodes revolving in circular patterns. Calculates coordinates dynamically via trigonometry.
-- **Usage**:
-  ```dart
-  MotionOrbitLoader(
-    color: Colors.pink,
-    size: 40.0,
-  )
-  ```
-
-#### `MotionDnaLoader`
-
-- **Visual Preview**:
-  ![Motion DNA Loader](assets/gifs/motion_dna_loader.gif)
-- **Description**: Renders a vertical double-helix strand model. Helix nodes oscillate along sine and cosine curves to project realistic 3D depth perception.
-- **Usage**:
-  ```dart
-  MotionDnaLoader(
-    color: Colors.indigoAccent,
-    size: 55.0,
-  )
-  ```
-
-#### `MotionAiLoader`
-
-- **Visual Preview**:
-  ![Motion AI Loader](assets/gifs/motion_ai_loader.gif)
-- **Description**: Represents a glowing neural intelligence core. Radiant light pulses from the center and sparks secondary brain synapse node connections.
-- **Usage**:
-  ```dart
-  MotionAiLoader(
-    color: Colors.cyanAccent,
-    size: 60.0,
-  )
-  ```
-
-#### `MotionLiquidLoader`
-
-- **Visual Preview**:
-  ![Motion Liquid Loader](assets/gifs/motion_liquid_loader.gif)
-- **Description**: A circular container filled with liquid fluid waves. Waves crest, fill, and slide dynamically using canvas paint curves.
-- **Usage**:
-  ```dart
-  MotionLiquidLoader(
-    color: Colors.blueAccent,
-    size: 48.0,
-  )
-  ```
-
-#### `MotionWaveLoader`
-
-- **Visual Preview**:
-  ![Motion Wave Loader](assets/gifs/motion_wave_loader.gif)
-- **Description**: Five vertical sound-bar graphs oscillating up/down in a clean equalizer pattern. Fully fitted to scale safely on micro-columns.
-- **Usage**:
-  ```dart
-  MotionWaveLoader(
-    color: Colors.amber,
-    size: 36.0,
-  )
-  ```
-
-#### `MotionFuturisticLoader`
-
-- **Visual Preview**:
-  ![Motion Futuristic Loader](assets/gifs/motion_futuristic_loader.gif)
-- **Description**: Renders a circular scifi radar scanning grid. A linear gradient sector sweeps 360 degrees, leaving a fading tracking glow.
-- **Usage**:
-  ```dart
-  MotionFuturisticLoader(
-    color: Colors.greenAccent,
-    size: 50.0,
-  )
-  ```
-
-#### `MotionMatrixLoader`
-
-- **Visual Preview**:
-  ![Motion Matrix Loader](assets/gifs/motion_matrix_loader.gif)
-- **Description**: Cascading green terminal monospace code characters drifting downwards. Translates string drops on individual streams to render high-performance cyber-rain.
-- **Usage**:
-  ```dart
-  MotionMatrixLoader(
-    color: Colors.emerald,
-    size: 70.0,
-  )
-  ```
-
-#### `MotionGradientRotatingLoader`
-
-- **Visual Preview**:
-  ![Motion Gradient Rotating Loader](assets/gifs/motion_gradient_rotating_loader.gif)
-- **Description**: Dual neon arc rings spinning in opposite directions, painted with harmonic sweep gradients.
-- **Usage**:
-  ```dart
-  MotionGradientRotatingLoader(
-    color: Colors.deepOrangeAccent,
-    size: 45.0,
-  )
-  ```
+| standard/dots.mov | standard/typing.mov | standard/pulse.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/standard/dots.mov" width="160" autoplay loop muted playsinline></video><br>**Dots**<br>`MotionDotsLoader` | <video src="assets/loaders/standard/typing.mov" width="160" autoplay loop muted playsinline></video><br>**Typing**<br>`MotionTypingIndicator` | <video src="assets/loaders/standard/pulse.mov" width="160" autoplay loop muted playsinline></video><br>**Pulse**<br>`MotionPulseLoader` |
+| **standard/orbit.mov** | **standard/DNA.mov** | **standard/AI.mov** |
+| <video src="assets/loaders/standard/orbit.mov" width="160" autoplay loop muted playsinline></video><br>**Orbit**<br>`MotionOrbitLoader` | <video src="assets/loaders/standard/DNA.mov" width="160" autoplay loop muted playsinline></video><br>**DNA**<br>`MotionDnaLoader` | <video src="assets/loaders/standard/AI.mov" width="160" autoplay loop muted playsinline></video><br>**AI**<br>`MotionAiLoader` |
+| **standard/liquid.mov** | **standard/wave.mov** | **standard/futuristic.mov** |
+| <video src="assets/loaders/standard/liquid.mov" width="160" autoplay loop muted playsinline></video><br>**Liquid**<br>`MotionLiquidLoader` | <video src="assets/loaders/standard/wave.mov" width="160" autoplay loop muted playsinline></video><br>**Wave**<br>`MotionWaveLoader` | <video src="assets/loaders/standard/futuristic.mov" width="160" autoplay loop muted playsinline></video><br>**Futuristic**<br>`MotionFuturisticLoader` |
+| **standard/matrix.mov** | **standard/gradient_rotating.mov** | |
+| <video src="assets/loaders/standard/matrix.mov" width="160" autoplay loop muted playsinline></video><br>**Matrix**<br>`MotionMatrixLoader` | <video src="assets/loaders/standard/gradient_rotating.mov" width="160" autoplay loop muted playsinline></video><br>**Gradient Rotating**<br>`MotionGradientRotatingLoader` | |
 
 ---
 
-### Advanced Category Loaders (35+ Premium Presets)
+### Advanced Category Loaders (60+ Premium Presets)
 
-Exposes named category factory constructors on `MotionLoader` allowing direct and beautifully clean initialization of specialized category families.
+Exposes named category factory constructors on `MotionLoader` allowing direct, beautifully clean initialization of specialized category families. Below are the grids showcasing all advanced vector loaders, grouped by category.
 
 #### 🧠 AI Category (`MotionLoader.ai`)
 
-- **Visual Preview**:
-  ![Motion AI Category Loader](assets/gifs/motion_ai_category.gif)
-- **Description**: Sci-fi and machine learning inspired intelligence loaders rendering synaptic networks, Siri/Gemini-style waves, teleporting warp meshes, and real-time terminal token streams.
-- **Usage**:
-  ```dart
-  MotionLoader.ai(
-    style: MotionAiStyle.thinking,
-    color: MotionColors.primaryNeon,
-    size: 60.0,
-    glow: true,
-  )
-  ```
-- **Styles (`MotionAiStyle`)**:
-  - `neuralNetwork` — Synaptic node linking with moving glowing paths.
-  - `thinking` — Morphing siri-style waveforms with breathing tracking dots.
-  - `quantum` — Warp particles teleporting in grid formations.
-  - `tokenStream` — Monospace terminal character streams simulating LLM tokens.
-- **Parameters**:
-  - `style`: The active [MotionAiStyle] preset style to render.
-  - `color`: Primary color.
-  - `size`: Width and height constraints (default: `50.0`).
-  - `glow`: Toggles glowing shader borders.
-  - `particleCount`: Total synapses (for `neuralNetwork`).
+| advanced/neural_network.mov | advanced/AI_thinking.mov | advanced/quantum_warp.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/neural_network.mov" width="160" autoplay loop muted playsinline></video><br>**Neural Network**<br>`MotionAiStyle.neuralNetwork` | <video src="assets/loaders/advanced/AI_thinking.mov" width="160" autoplay loop muted playsinline></video><br>**AI Thinking**<br>`MotionAiStyle.thinking` | <video src="assets/loaders/advanced/quantum_warp.mov" width="160" autoplay loop muted playsinline></video><br>**Quantum Warp**<br>`MotionAiStyle.quantum` |
+| **advanced/token_stream.mov** | **advanced/token_predictor.mov** | **advanced/neural_pulse.mov** |
+| <video src="assets/loaders/advanced/token_stream.mov" width="160" autoplay loop muted playsinline></video><br>**Token Stream**<br>`MotionAiStyle.tokenStream` | <video src="assets/loaders/advanced/token_predictor.mov" width="160" autoplay loop muted playsinline></video><br>**Token Predictor**<br>`MotionAiStyle.tokenPrediction` | <video src="assets/loaders/advanced/neural_pulse.mov" width="160" autoplay loop muted playsinline></video><br>**Neural Pulse**<br>`MotionAiStyle.neuralPulse` |
+| **advanced/tensor_data_matrix.mov** | **advanced/scifi_cyber_eye.mov** | |
+| <video src="assets/loaders/advanced/tensor_data_matrix.mov" width="160" autoplay loop muted playsinline></video><br>**TensorFlow**<br>`MotionAiStyle.tensorFlow` | <video src="assets/loaders/advanced/scifi_cyber_eye.mov" width="160" autoplay loop muted playsinline></video><br>**AI Cyber Eye**<br>`MotionAiStyle.aiEye` | |
+
+#### 🦾 Cyberpunk Category (`MotionLoader.cyberpunk`)
+
+| advanced/console_boot_terminal.mov | advanced/cyber_spatial_rift.mov | advanced/hud_concentric_ring.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/console_boot_terminal.mov" width="160" autoplay loop muted playsinline></video><br>**Terminal Boot**<br>`MotionCyberpunkStyle.terminalBoot` | <video src="assets/loaders/advanced/cyber_spatial_rift.mov" width="160" autoplay loop muted playsinline></video><br>**Glitch**<br>`MotionCyberpunkStyle.glitch` | <video src="assets/loaders/advanced/hud_concentric_ring.mov" width="160" autoplay loop muted playsinline></video><br>**Cyber Ring HUD**<br>`MotionCyberpunkStyle.cyberRing` |
+| **advanced/data_stream_pipes.mov** | **advanced/firewall_scanner_radar.mov** | |
+| <video src="assets/loaders/advanced/data_stream_pipes.mov" width="160" autoplay loop muted playsinline></video><br>**Data Stream**<br>`MotionCyberpunkStyle.dataStream` | <video src="assets/loaders/advanced/firewall_scanner_radar.mov" width="160" autoplay loop muted playsinline></video><br>**Firewall Scanner**<br>`MotionCyberpunkStyle.firewallScanner` | |
+
+#### 🧲 Physics Category (`MotionLoader.physics`)
+
+| advanced/newton_pendulum.mov | advanced/bounce_chain.mov | advanced/gravity_orbit.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/newton_pendulum.mov" width="160" autoplay loop muted playsinline></video><br>**Pendulum**<br>`MotionPhysicsStyle.pendulum` | <video src="assets/loaders/advanced/bounce_chain.mov" width="160" autoplay loop muted playsinline></video><br>**Bounce Chain**<br>`MotionPhysicsStyle.bounceChain` | <video src="assets/loaders/advanced/gravity_orbit.mov" width="160" autoplay loop muted playsinline></video><br>**Gravity Orbit**<br>`MotionPhysicsStyle.gravityOrbit` |
+| **advanced/falling_hourglass_sand.mov** | **advanced/magnetic_filings.mov** | *No Preview (Asset Missing)* |
+| <video src="assets/loaders/advanced/falling_hourglass_sand.mov" width="160" autoplay loop muted playsinline></video><br>**Sand Simulation**<br>`MotionPhysicsStyle.sandSimulation` | <video src="assets/loaders/advanced/magnetic_filings.mov" width="160" autoplay loop muted playsinline></video><br>**Magnetic Field**<br>`MotionPhysicsStyle.magneticField` | **Fluid Particle**<br>`MotionPhysicsStyle.fluidParticle` |
+
+#### 📐 Geometry Category (`MotionLoader.geometry`)
+
+| advanced/impossible_infinity_cube.mov | advanced/honeycomb_radial_wave.mov | advanced/recursive_fractal_tree.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/impossible_infinity_cube.mov" width="160" autoplay loop muted playsinline></video><br>**Infinite Cube**<br>`MotionGeometryStyle.infiniteCube` | <video src="assets/loaders/advanced/honeycomb_radial_wave.mov" width="160" autoplay loop muted playsinline></video><br>**Hexagon Swarm**<br>`MotionGeometryStyle.hexagonSwarm` | <video src="assets/loaders/advanced/recursive_fractal_tree.mov" width="160" autoplay loop muted playsinline></video><br>**Fractal Tree**<br>`MotionGeometryStyle.fractal` |
+| **advanced/smooth_polygon_morph.mov** | | |
+| <video src="assets/loaders/advanced/smooth_polygon_morph.mov" width="160" autoplay loop muted playsinline></video><br>**Polygon Morph**<br>`MotionGeometryStyle.polygonMorph` | | |
+
+#### 💬 Social Category (`MotionLoader.social`)
+
+| advanced/reels_neon_progress.mov | advanced/live_broadcast_signl.mov | advanced/story_gradient_ring.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/reels_neon_progress.mov" width="160" autoplay loop muted playsinline></video><br>**Reels Upload**<br>`MotionSocialStyle.reelsUpload` | <video src="assets/loaders/advanced/live_broadcast_signl.mov" width="160" autoplay loop muted playsinline></video><br>**Live Stream**<br>`MotionSocialStyle.liveStream` | <video src="assets/loaders/advanced/story_gradient_ring.mov" width="160" autoplay loop muted playsinline></video><br>**Story Ring**<br>`MotionSocialStyle.storyRing` |
+
+#### 📦 3D Category (`MotionLoader.threeD`)
+
+| advanced/3d_parallax_cubes.mov | advanced/stacked_isometric_block.mov | advanced/wire_sphere_landscape.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/3d_parallax_cubes.mov" width="160" autoplay loop muted playsinline></video><br>**Floating Cube**<br>`MotionThreeDStyle.floatingCube` | <video src="assets/loaders/advanced/stacked_isometric_block.mov" width="160" autoplay loop muted playsinline></video><br>**Isometric Blocks**<br>`MotionThreeDStyle.isometric` | <video src="assets/loaders/advanced/wire_sphere_landscape.mov" width="160" autoplay loop muted playsinline></video><br>**Holographic Sphere**<br>`MotionThreeDStyle.holographicSphere` |
+
+#### 🎵 Audio Category (`MotionLoader.audio`)
+
+| advanced/equalizer_sound_freq.mov | advanced/spinning_retro_record.mov | advanced/bass_reactive_curve.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/equalizer_sound_freq.mov" width="160" autoplay loop muted playsinline></video><br>**Equalizer**<br>`MotionAudioStyle.equalizer` | <video src="assets/loaders/advanced/spinning_retro_record.mov" width="160" autoplay loop muted playsinline></video><br>**Retro Vinyl**<br>`MotionAudioStyle.vinyl` | <video src="assets/loaders/advanced/bass_reactive_curve.mov" width="160" autoplay loop muted playsinline></video><br>**Beat Wave**<br>`MotionAudioStyle.beatWave` |
+
+#### 🎨 Artistic Category (`MotionLoader.artistic`)
+
+| advanced/origami_paper_crane.mov | advanced/calligraphy_infinity.mov | *No Preview (Asset Missing)* |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/origami_paper_crane.mov" width="160" autoplay loop muted playsinline></video><br>**Origami**<br>`MotionArtisticStyle.origami` | <video src="assets/loaders/advanced/calligraphy_infinity.mov" width="160" autoplay loop muted playsinline></video><br>**Calligraphy Stroke**<br>`MotionArtisticStyle.calligraphyStroke` | **Zen Circle**<br>`MotionArtisticStyle.zenCircle` |
+
+#### 🌌 Experimental Category (`MotionLoader.experimental`)
+
+| advanced/melting_time_wraop_clock.mov | advanced/sci_fi_energy_portal.mov | advanced/cyber_spatial_rift.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/melting_time_wraop_clock.mov" width="160" autoplay loop muted playsinline></video><br>**Time Warp**<br>`MotionExperimentalStyle.timeWarp` | <video src="assets/loaders/advanced/sci_fi_energy_portal.mov" width="160" autoplay loop muted playsinline></video><br>**Energy Portal**<br>`MotionExperimentalStyle.portal` | <video src="assets/loaders/advanced/cyber_spatial_rift.mov" width="160" autoplay loop muted playsinline></video><br>**Dimensional Rift**<br>`MotionExperimentalStyle.dimensionalRift` |
+| **advanced/cosmic_tunnel_stars.mov** | | |
+| <video src="assets/loaders/advanced/cosmic_tunnel_stars.mov" width="160" autoplay loop muted playsinline></video><br>**Wormhole**<br>`MotionExperimentalStyle.wormhole` | | |
 
 #### 🌊 Liquid Category (`MotionLoader.liquid`)
 
-- **Visual Preview**:
-  ![Motion Liquid Category Loader](assets/gifs/motion_liquid_category.gif)
-- **Description**: High-end fluid dynamics, organic droplet ripples, and expanding ink diffusion paint structures.
-- **Usage**:
-  ```dart
-  MotionLoader.liquid(
-    style: MotionLiquidStyle.lavaLamp,
-    color: Colors.pink,
-    size: 65.0,
-  )
-  ```
-- **Styles (`MotionLiquidStyle`)**:
-  - `lavaLamp` — Floating gooey metaballs morphing and merging together via radial gradient layers.
-  - `waterDrop` — Concentric drops landing on surfaces generating expanding refraction waves.
-  - `inkSpread` — Radial organic ink splats bleeding and diffusing over backdrops.
-- **Parameters**:
-  - `style`: The active [MotionLiquidStyle] preset style to render.
-  - `color`: Primary fluid color.
-  - `size`: Bounding box dimension size (default: `50.0`).
+| advanced/fluid_attraction.mov | advanced/water_drop_pulse.mov | advanced/ink_spread.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/fluid_attraction.mov" width="160" autoplay loop muted playsinline></video><br>**Lava Lamp**<br>`MotionLiquidStyle.lavaLamp` | <video src="assets/loaders/advanced/water_drop_pulse.mov" width="160" autoplay loop muted playsinline></video><br>**Water Drop**<br>`MotionLiquidStyle.waterDrop` | <video src="assets/loaders/advanced/ink_spread.mov" width="160" autoplay loop muted playsinline></video><br>**Ink Spread**<br>`MotionLiquidStyle.inkSpread` |
 
-#### 💎 Glassmorphism Category (`MotionLoader.glass`)
+#### 🔮 Glass Category (`MotionLoader.glass`)
 
-- **Visual Preview**:
-  ![Motion Glass Category Loader](assets/gifs/motion_glass_category.gif)
-- **Description**: Translucent frosted containers, mesh ribbons, and rotating crystal facets with neon border highlights.
-- **Usage**:
-  ```dart
-  MotionLoader.glass(
-    style: MotionGlassStyle.prismCrystal,
-    color: Colors.cyanAccent,
-    size: 60.0,
-    glow: true,
-  )
-  ```
-- **Styles (`MotionGlassStyle`)**:
-  - `glassOrb` — Frosted glass spheres bouncing and sliding softly inside container boundaries.
-  - `prismCrystal` — Rotating 3D octahedron refracting rainbow gradients.
-  - `aurora` — Wavy multi-layered smooth northern lights mesh gradients.
-- **Parameters**:
-  - `style`: The active [MotionGlassStyle] preset style to render.
-  - `color`: Frosted highlight overlay color.
-  - `size`: Bounding box size (default: `50.0`).
-  - `glow`: Enables/disables back-glow shadows.
+| advanced/frosted_glass_orb.mov | advanced/prism_crystal.mov | advanced/aurora_mesh.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/frosted_glass_orb.mov" width="160" autoplay loop muted playsinline></video><br>**Glass Orb**<br>`MotionGlassStyle.glassOrb` | <video src="assets/loaders/advanced/prism_crystal.mov" width="160" autoplay loop muted playsinline></video><br>**Prism Crystal**<br>`MotionGlassStyle.prismCrystal` | <video src="assets/loaders/advanced/aurora_mesh.mov" width="160" autoplay loop muted playsinline></video><br>**Aurora Mesh**<br>`MotionGlassStyle.aurora` |
 
-#### 🌌 Space / Sci-Fi Category (`MotionLoader.space`)
+#### 💎 Luxury Category (`MotionLoader.luxury`)
 
-- **Visual Preview**:
-  ![Motion Space Category Loader](assets/gifs/motion_space_category.gif)
-- **Description**: Gravity vortices, logarithmic rotating galaxies, and star hyperspace speeds.
-- **Usage**:
-  ```dart
-  MotionLoader.space(
-    style: MotionSpaceStyle.blackHole,
-    color: Colors.amber,
-    size: 70.0,
-  )
-  ```
-- **Styles (`MotionSpaceStyle`)**:
-  - `blackHole` — Star particles accelerating in a high-gravity spiral vortex into a central dark singularity event horizon.
-  - `galaxy` — Kepler speed rotating 3-arm spirals with nebula core gradients and parallax depth.
-  - `warpSpeed` — Hyperspace starfields stretching perspective lines outwards exponentially.
-- **Parameters**:
-  - `style`: The active [MotionSpaceStyle] preset style to render.
-  - `color`: Accretion and trail color.
-  - `size`: Bounding box dimensions (default: `50.0`).
-  - `glow`: Toggles high-intensity core glowing shadows.
+| advanced/prism_shine_diamond.mov | advanced/silk_flow_gradient.mov | advanced/watch_clockwork_gear.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/prism_shine_diamond.mov" width="160" autoplay loop muted playsinline></video><br>**Diamond Spark**<br>`MotionLuxuryStyle.diamondSpark` | <video src="assets/loaders/advanced/silk_flow_gradient.mov" width="160" autoplay loop muted playsinline></video><br>**Silk Flow**<br>`MotionLuxuryStyle.silkFlow` | <video src="assets/loaders/advanced/watch_clockwork_gear.mov" width="160" autoplay loop muted playsinline></video><br>**Premium Watch**<br>`MotionLuxuryStyle.premiumWatch` |
+| *No Preview (Asset Missing)* | | |
+| **Gold Sweep**<br>`MotionLuxuryStyle.goldSweep` | | |
 
-#### ⚔️ Gaming Category (`MotionLoader.gaming`)
+#### 🎮 Gaming Category (`MotionLoader.gaming`)
 
-- **Visual Preview**:
-  ![Motion Gaming Category Loader](assets/gifs/motion_gaming_category.gif)
-- **Description**: RPG xp gauges, counter-rotating runic spell wheels, and sequence CRT retro pixels.
-- **Usage**:
-  ```dart
-  MotionLoader.gaming(
-    style: MotionGamingStyle.bossFight,
-    color: Colors.redAccent,
-    size: 60.0,
-    glow: true,
-  )
-  ```
-- **Styles (`MotionGamingStyle`)**:
-  - `xpProgress` — Sweeping circular progress shields with gold sparks and level-up bounce pulses.
-  - `bossFight` — Counter-rotating runic circles executing radial shockwave fire particles.
-  - `pixel` — Retro CRT scanline grids scaling sequences of glitched 8-bit blocks.
-- **Parameters**:
-  - `style`: The active [MotionGamingStyle] preset style to render.
-  - `color`: Fire energy or grid color.
-  - `size`: Bounding box size (default: `50.0`).
-  - `glow`: Runic/fire glowing boundary switch.
-
-#### 🧬 Physics Category (`MotionLoader.physics`)
-
-- **Visual Preview**:
-  ![Motion Physics Category Loader](assets/gifs/motion_physics_category.gif)
-- **Description**: Conservation of momentum swing models, interlocking spring chains, and gravitational orbits.
-- **Usage**:
-  ```dart
-  MotionLoader.physics(
-    style: MotionPhysicsStyle.pendulum,
-    color: Colors.purple,
-    size: 60.0,
-  )
-  ```
-- **Styles (`MotionPhysicsStyle`)**:
-  - `pendulum` — Physics-based Newton's Cradle swinging collision momentum.
-  - `bounceChain` — Interlocking spring nodes transferring wave pulses.
-  - `gravityOrbit` — Planets accelerating eccentric orbits around a high-mass sun core.
-- **Parameters**:
-  - `style`: The active [MotionPhysicsStyle] preset style to render.
-  - `color`: Metal orb or core color.
-  - `size`: Bounding box dimension size (default: `50.0`).
-  - `glow`: Core/trail orbit glow toggle.
-
-#### ✏️ Minimalist Category (`MotionLoader.minimal`)
-
-- **Visual Preview**:
-  ![Motion Minimal Category Loader](assets/gifs/motion_minimal_category.gif)
-- **Description**: Infinity line drawings, seamless shape morphings, and waving silk ribbons.
-- **Usage**:
-  ```dart
-  MotionLoader.minimal(
-    style: MotionMinimalStyle.lineDraw,
-    color: Colors.teal,
-    size: 55.0,
-    strokeWidth: 4.0,
-  )
-  ```
-- **Styles (`MotionMinimalStyle`)**:
-  - `lineDraw` — Self-drawing Lemniscate of Bernoulli infinity loop paths.
-  - `morphShape` — Smooth point-by-point vector morphing (Circle ➔ Square ➔ Triangle ➔ Circle).
-  - `infiniteRibbon` — Waving curved 3D silk ribbons utilizing phase-shifted sines.
-- **Parameters**:
-  - `style`: The active [MotionMinimalStyle] preset style to render.
-  - `color`: Vector stroke/fill color.
-  - `size`: Bounding box size (default: `50.0`).
-  - `strokeWidth`: Vector outline thickness (Lemniscate).
+| advanced/hero_xp_shield.mov | advanced/magic_runic_ring.mov | advanced/retro_crt_pixel.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/hero_xp_shield.mov" width="160" autoplay loop muted playsinline></video><br>**XP Progress**<br>`MotionGamingStyle.xpProgress` | <video src="assets/loaders/advanced/magic_runic_ring.mov" width="160" autoplay loop muted playsinline></video><br>**Boss Fight**<br>`MotionGamingStyle.bossFight` | <video src="assets/loaders/advanced/retro_crt_pixel.mov" width="160" autoplay loop muted playsinline></video><br>**Retro Pixel**<br>`MotionGamingStyle.pixel` |
 
 #### 📊 SaaS Category (`MotionLoader.saas`)
 
-- **Visual Preview**:
-  ![Motion SaaS Category Loader](assets/gifs/motion_saas_category.gif)
-- **Description**: Staggered matrix grid skeletons, active analytics charts, and sync arrows inside bezier clouds.
+| advanced/skeleton_grid.mov | advanced/chart_analytics.mov | advanced/sync_cloud_bubbles.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/skeleton_grid.mov" width="160" autoplay loop muted playsinline></video><br>**Pulse Grid**<br>`MotionSaasStyle.pulseGrid` | <video src="assets/loaders/advanced/chart_analytics.mov" width="160" autoplay loop muted playsinline></video><br>**Analytics Chart**<br>`MotionSaasStyle.analytics` | <video src="assets/loaders/advanced/sync_cloud_bubbles.mov" width="160" autoplay loop muted playsinline></video><br>**Cloud Sync**<br>`MotionSaasStyle.cloudSync` |
+
+#### 🌿 Nature Category (`MotionLoader.nature`)
+
+| advanced/glowing_firefly_light.mov | advanced/wind_tornado_dust.mov | *No Preview (Asset Missing)* |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/glowing_firefly_light.mov" width="160" autoplay loop muted playsinline></video><br>**Firefly Glow**<br>`MotionNatureStyle.firefly` | <video src="assets/loaders/advanced/wind_tornado_dust.mov" width="160" autoplay loop muted playsinline></video><br>**Tornado Vortex**<br>`MotionNatureStyle.tornado` | **Volcano**<br>`MotionNatureStyle.volcano` |
+| *No Preview (Asset Missing)* | *No Preview (Asset Missing)* | |
+| **Leaf Wind**<br>`MotionNatureStyle.leafWind` | **Solar Eclipse**<br>`MotionNatureStyle.solarEclipse` | |
+
+#### 🌌 Space Category (`MotionLoader.space`)
+
+| advanced/black_hole.mov | advanced/glaxy_spiral.mov | advanced/warp_respective.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/black_hole.mov" width="160" autoplay loop muted playsinline></video><br>**Black Hole**<br>`MotionSpaceStyle.blackHole` | <video src="assets/loaders/advanced/glaxy_spiral.mov" width="160" autoplay loop muted playsinline></video><br>**Galaxy**<br>`MotionSpaceStyle.galaxy` | <video src="assets/loaders/advanced/warp_respective.mov" width="160" autoplay loop muted playsinline></video><br>**Warp Speed**<br>`MotionSpaceStyle.warpSpeed` |
+
+#### 📐 Minimal Category (`MotionLoader.minimal`)
+
+| advanced/lemniscate_path.mov | advanced/morphing_shapes.mov | advanced/3d_wave_ribbon.mov |
+| :---: | :---: | :---: |
+| <video src="assets/loaders/advanced/lemniscate_path.mov" width="160" autoplay loop muted playsinline></video><br>**Line Draw**<br>`MotionMinimalStyle.lineDraw` | <video src="assets/loaders/advanced/morphing_shapes.mov" width="160" autoplay loop muted playsinline></video><br>**Morph Shape**<br>`MotionMinimalStyle.morphShape` | <video src="assets/loaders/advanced/3d_wave_ribbon.mov" width="160" autoplay loop muted playsinline></video><br>**Infinite Ribbon**<br>`MotionMinimalStyle.infiniteRibbon` |
+
+---
+
+### 🎨 Compound Effect Stack System (`MotionBuilder`)
+
+Exposed via `MotionBuilder`, this unified decorator system allows wrapping **any** arbitrary child widget with stackable, GPU-optimized cascading compound visual animations!
+
 - **Usage**:
   ```dart
-  MotionLoader.saas(
-    style: MotionSaasStyle.analytics,
-    color: Colors.blueAccent,
-    size: 60.0,
+  MotionBuilder(
+    duration: const Duration(seconds: 4),
+    effects: const [
+      GlowEffect(color: Colors.purple, blurRadius: 16.0),
+      FloatEffect(dy: 8.0),
+      OrbitEffect(radius: 20.0, speed: 1.2),
+    ],
+    child: Image.asset('assets/images/logo.png'),
   )
   ```
-- **Styles (`MotionSaasStyle`)**:
-  - `pulseGrid` — 3x3 staggered grid skeletons pulsing placeholder opacities.
-  - `analytics` — Auto-drawing line chart graphs with traveling active coordinate nodes.
-  - `cloudSync` — Cloud contours syncing upload bubbles into central spinning arrows.
+- **Stackable Effects**:
+  - `GlowEffect(Color color, double blurRadius, double spreadRadius)` — Adds a pulsing neon bloom shadow halo behind the child.
+  - `FloatEffect(double dy)` — Floats the child vertically up and down in smooth sinusoidal curves.
+  - `OrbitEffect(double radius, double speed)` — Orbits the child itself (or nested markers) in a circular path.
+  - `RippleEffect(Color color, double maxRadius)` — Shoots multiple expanding circular waves behind the child.
+  - `GlitchEffect(double intensity)` — Trigger random RGB digital split distortions and skews for cyberpunk aesthetics.
 - **Parameters**:
-  - `style`: The active [MotionSaasStyle] preset style to render.
-  - `color`: Accent theme color.
-  - `size`: Width and height constraints (default: `50.0`).
-  - `glow`: Sync/arrow core glow toggle.
+  - `effects`: A list of [MotionEffect] components to apply sequentially (applied inner-to-outer).
+  - `child`: The target widget to compound.
+  - `duration`: Central loop duration cycle (default: `3 seconds`).
 
 ---
 
@@ -820,6 +650,10 @@ If you love this package and find it helpful, consider supporting the developer:
 
 * **Buy me a Chai or Coffee** ☕
 * **UPI ID**: `7761826600@kotak811`
+
+<p align="left">
+  <img src="assets/payment_qr.jpg" width="200" alt="Scan to Pay Ajeet Kumar Sah"/>
+</p>
 
 Every cup helps keep the screen bright and the code clean!
 

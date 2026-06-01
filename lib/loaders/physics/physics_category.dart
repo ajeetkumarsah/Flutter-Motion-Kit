@@ -14,6 +14,15 @@ enum MotionPhysicsStyle {
 
   /// Orbital gravity decay particles accelerating around a massive nucleus.
   gravityOrbit,
+
+  /// Viscosity particle fluid simulation with pressure attraction equations.
+  fluidParticle,
+
+  /// Gravity-falling sand particles accumulating at the bottom with flow physics.
+  sandSimulation,
+
+  /// Iron filings aligning dynamically towards rotating magnetic field poles.
+  magneticField,
 }
 
 /// Newton's Cradle swing momentum transferring kinetic collision energy.
@@ -505,4 +514,458 @@ class _GravityOrbitPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _GravityOrbitPainter oldDelegate) => true;
+}
+
+/// Viscosity particle fluid simulation with pressure attraction equations.
+class MotionFluidParticleLoader extends StatefulWidget {
+  final Color color;
+  final double size;
+  final bool glow;
+
+  const MotionFluidParticleLoader({
+    super.key,
+    required this.color,
+    required this.size,
+    this.glow = true,
+  });
+
+  @override
+  State<MotionFluidParticleLoader> createState() =>
+      _MotionFluidParticleLoaderState();
+}
+
+class _MotionFluidParticleLoaderState extends State<MotionFluidParticleLoader>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  final List<_FluidParticle> _particles = [];
+  final _random = math.Random();
+
+  @override
+  void initState() {
+    super.initState();
+    final motion = Get.isRegistered<MotionController>()
+        ? Get.find<MotionController>()
+        : null;
+    final speed = motion?.speedMultiplier ?? 1.0;
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: (3000 / speed).round()),
+    )..repeat();
+
+    for (int i = 0; i < 16; i++) {
+      final angle = _random.nextDouble() * 2 * math.pi;
+      final dist = _random.nextDouble() * widget.size * 0.15;
+      _particles.add(_FluidParticle(
+        pos: Offset(dist * math.cos(angle), dist * math.sin(angle)),
+        radius: 4.0 + _random.nextDouble() * 4.0,
+        speedOffset: _random.nextDouble() * 2 * math.pi,
+      ));
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final motion = Get.isRegistered<MotionController>()
+        ? Get.find<MotionController>()
+        : null;
+    final isReduced = motion?.reducedMotion ?? false;
+
+    return SizedBox(
+      width: widget.size,
+      height: widget.size,
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return CustomPaint(
+            painter: _FluidParticlePainter(
+              progress: isReduced ? 0.0 : _controller.value,
+              color: widget.color,
+              particles: _particles,
+              glow: widget.glow && !(motion?.performanceMode ?? false),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _FluidParticle {
+  Offset pos;
+  final double radius;
+  final double speedOffset;
+
+  _FluidParticle({
+    required this.pos,
+    required this.radius,
+    required this.speedOffset,
+  });
+}
+
+class _FluidParticlePainter extends CustomPainter {
+  final double progress;
+  final Color color;
+  final List<_FluidParticle> particles;
+  final bool glow;
+
+  _FluidParticlePainter({
+    required this.progress,
+    required this.color,
+    required this.particles,
+    required this.glow,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center = Offset(size.width / 2, size.height / 2);
+    final maxDist = size.width * 0.35;
+
+    final List<Offset> points = [];
+    for (var p in particles) {
+      final angle = progress * 2 * math.pi + p.speedOffset;
+      final rFactor =
+          0.5 + 0.3 * math.sin(progress * 4 * math.pi + p.speedOffset * 2);
+      final x = center.dx + p.pos.dx + maxDist * rFactor * math.cos(angle);
+      final y = center.dy + p.pos.dy + maxDist * rFactor * math.sin(angle);
+      points.add(Offset(x, y));
+    }
+
+    final Paint fluidPaint = Paint()..style = PaintingStyle.fill;
+    final Paint glowPaint = Paint()
+      ..style = PaintingStyle.fill
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10);
+
+    for (int i = 0; i < points.length; i++) {
+      final p = particles[i];
+      final activeColor =
+          Color.lerp(color, Colors.cyanAccent, i / points.length)!;
+
+      if (glow) {
+        glowPaint.color = activeColor.withValues(alpha: 0.25);
+        canvas.drawCircle(points[i], p.radius + 6, glowPaint);
+      }
+
+      fluidPaint.color = activeColor.withValues(alpha: 0.85);
+      canvas.drawCircle(points[i], p.radius, fluidPaint);
+    }
+
+    final tensionPaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 4.0
+      ..strokeCap = StrokeCap.round;
+
+    for (int i = 0; i < points.length; i++) {
+      for (int j = i + 1; j < points.length; j++) {
+        final dist = (points[i] - points[j]).distance;
+        if (dist < size.width * 0.2) {
+          final intensity = (1.0 - (dist / (size.width * 0.2))).clamp(0.0, 1.0);
+          tensionPaint.color = Color.lerp(color, Colors.cyanAccent, intensity)!
+              .withValues(alpha: intensity * 0.4);
+          canvas.drawLine(points[i], points[j], tensionPaint);
+        }
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _FluidParticlePainter oldDelegate) => true;
+}
+
+/// Gravity-falling sand particles accumulating at the bottom with flow physics.
+class MotionSandSimulationLoader extends StatefulWidget {
+  final Color color;
+  final double size;
+
+  const MotionSandSimulationLoader({
+    super.key,
+    required this.color,
+    required this.size,
+  });
+
+  @override
+  State<MotionSandSimulationLoader> createState() =>
+      _MotionSandSimulationLoaderState();
+}
+
+class _MotionSandSimulationLoaderState extends State<MotionSandSimulationLoader>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  final List<_SandGrain> _sand = [];
+  final _random = math.Random();
+
+  @override
+  void initState() {
+    super.initState();
+    final motion = Get.isRegistered<MotionController>()
+        ? Get.find<MotionController>()
+        : null;
+    final speed = motion?.speedMultiplier ?? 1.0;
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: (2000 / speed).round()),
+    )..repeat();
+
+    for (int i = 0; i < 30; i++) {
+      _sand.add(_SandGrain(
+        xOffset: -0.1 + _random.nextDouble() * 0.2,
+        speed: 1.0 + _random.nextDouble() * 1.5,
+        delay: _random.nextDouble(),
+        size: 1.5 + _random.nextDouble() * 2.0,
+      ));
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final motion = Get.isRegistered<MotionController>()
+        ? Get.find<MotionController>()
+        : null;
+    final isReduced = motion?.reducedMotion ?? false;
+
+    return SizedBox(
+      width: widget.size,
+      height: widget.size,
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return CustomPaint(
+            painter: _SandPainter(
+              progress: isReduced ? 0.0 : _controller.value,
+              color: widget.color,
+              sand: _sand,
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _SandGrain {
+  final double xOffset;
+  final double speed;
+  final double delay;
+  final double size;
+
+  _SandGrain({
+    required this.xOffset,
+    required this.speed,
+    required this.delay,
+    required this.size,
+  });
+}
+
+class _SandPainter extends CustomPainter {
+  final double progress;
+  final Color color;
+  final List<_SandGrain> sand;
+
+  _SandPainter({
+    required this.progress,
+    required this.color,
+    required this.sand,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+
+    final glassPaint = Paint()
+      ..color = Colors.white24
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.5;
+
+    final path = Path();
+    path.moveTo(w * 0.2, h * 0.1);
+    path.lineTo(w * 0.8, h * 0.1);
+    path.lineTo(w * 0.55, h * 0.5);
+    path.lineTo(w * 0.8, h * 0.9);
+    path.lineTo(w * 0.2, h * 0.9);
+    path.lineTo(w * 0.45, h * 0.5);
+    path.close();
+    canvas.drawPath(path, glassPaint);
+
+    final sandPaint = Paint()..style = PaintingStyle.fill;
+
+    for (int i = 0; i < sand.length; i++) {
+      final s = sand[i];
+      final grainProg = (progress * s.speed + s.delay) % 1.0;
+
+      double x = 0.0;
+      double y = 0.0;
+
+      if (grainProg < 0.5) {
+        final t = grainProg / 0.5;
+        x = w * 0.5 + (s.xOffset * w * 0.4) * (1.0 - t);
+        y = h * 0.15 + (h * 0.35) * t;
+      } else {
+        final t = (grainProg - 0.5) / 0.5;
+        x = w * 0.5 + (s.xOffset * w * 0.6) * t;
+        final stackHeight = h * 0.88 -
+            (1.0 - (s.xOffset * 2.0).abs()) * h * 0.08 * (1.0 - t * 0.1);
+        y = h * 0.5 + (stackHeight - h * 0.5) * t;
+      }
+
+      final pos = Offset(x, y);
+      final opacity = math.sin(grainProg * math.pi);
+
+      sandPaint.color = Color.lerp(color, Colors.amberAccent, i / sand.length)!
+          .withValues(alpha: opacity.clamp(0.2, 1.0));
+
+      canvas.drawCircle(pos, s.size, sandPaint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _SandPainter oldDelegate) => true;
+}
+
+/// Iron filings aligning dynamically towards rotating magnetic field poles.
+class MotionMagneticFieldLoader extends StatefulWidget {
+  final Color color;
+  final double size;
+
+  const MotionMagneticFieldLoader({
+    super.key,
+    required this.color,
+    required this.size,
+  });
+
+  @override
+  State<MotionMagneticFieldLoader> createState() =>
+      _MotionMagneticFieldLoaderState();
+}
+
+class _MotionMagneticFieldLoaderState extends State<MotionMagneticFieldLoader>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    final motion = Get.isRegistered<MotionController>()
+        ? Get.find<MotionController>()
+        : null;
+    final speed = motion?.speedMultiplier ?? 1.0;
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: (3500 / speed).round()),
+    )..repeat();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final motion = Get.isRegistered<MotionController>()
+        ? Get.find<MotionController>()
+        : null;
+    final isReduced = motion?.reducedMotion ?? false;
+
+    return SizedBox(
+      width: widget.size,
+      height: widget.size,
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return CustomPaint(
+            painter: _MagneticPainter(
+              progress: isReduced ? 0.0 : _controller.value,
+              color: widget.color,
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _MagneticPainter extends CustomPainter {
+  final double progress;
+  final Color color;
+
+  _MagneticPainter({
+    required this.progress,
+    required this.color,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center = Offset(size.width / 2, size.height / 2);
+    final w = size.width;
+    final h = size.height;
+
+    final poleAngle = progress * 2 * math.pi;
+    final poleDistance = w * 0.35;
+    final north = Offset(center.dx + poleDistance * math.cos(poleAngle),
+        center.dy + poleDistance * math.sin(poleAngle));
+    final south = Offset(center.dx - poleDistance * math.cos(poleAngle),
+        center.dy - poleDistance * math.sin(poleAngle));
+
+    final Paint filingPaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.2
+      ..strokeCap = StrokeCap.round;
+
+    final step = w / 8;
+    for (double i = step / 2; i < w; i += step) {
+      for (double j = step / 2; j < h; j += step) {
+        final pos = Offset(i, j);
+
+        final vNorth = pos - north;
+        final vSouth = south - pos;
+
+        final dNorth = vNorth.distance.clamp(1.0, w);
+        final dSouth = vSouth.distance.clamp(1.0, w);
+
+        final bNorth = vNorth / (dNorth * dNorth * dNorth);
+        final bSouth = vSouth / (dSouth * dSouth * dSouth);
+
+        final bField = bNorth + bSouth;
+        final filingAngle = math.atan2(bField.dy, bField.dx);
+
+        final filingLength = step * 0.45;
+        final dx = filingLength * math.cos(filingAngle) / 2;
+        final dy = filingLength * math.sin(filingAngle) / 2;
+
+        final intensity =
+            (1.0 - (dNorth.clamp(0.0, dSouth) / w)).clamp(0.2, 1.0);
+        filingPaint.color = Color.lerp(color, Colors.redAccent, intensity)!
+            .withValues(alpha: intensity * 0.85);
+
+        canvas.drawLine(
+            pos - Offset(dx, dy), pos + Offset(dx, dy), filingPaint);
+      }
+    }
+
+    final polePaint = Paint()..style = PaintingStyle.fill;
+    polePaint.color = Colors.redAccent.withValues(alpha: 0.6);
+    canvas.drawCircle(north, 4, polePaint);
+
+    polePaint.color = Colors.blueAccent.withValues(alpha: 0.6);
+    canvas.drawCircle(south, 4, polePaint);
+  }
+
+  @override
+  bool shouldRepaint(covariant _MagneticPainter oldDelegate) => true;
 }

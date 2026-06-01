@@ -58,6 +58,10 @@ class _ShowcaseDashboardState extends State<ShowcaseDashboard> {
     {'category': 'AI', 'style': 'thinking', 'label': 'AI THINKING'},
     {'category': 'AI', 'style': 'quantum', 'label': 'QUANTUM WARP'},
     {'category': 'AI', 'style': 'tokenStream', 'label': 'TOKEN STREAM'},
+    {'category': 'AI', 'style': 'tokenPrediction', 'label': 'TOKEN PREDICTOR'},
+    {'category': 'AI', 'style': 'neuralPulse', 'label': 'NEURAL PULSE'},
+    {'category': 'AI', 'style': 'tensorFlow', 'label': 'TENSOR DATA MATRIX'},
+    {'category': 'AI', 'style': 'aiEye', 'label': 'SCIFI CYBER EYE'},
     {'category': 'LIQUID', 'style': 'lavaLamp', 'label': 'LAVA LAMP'},
     {'category': 'LIQUID', 'style': 'waterDrop', 'label': 'WATER DROP RIPPLE'},
     {'category': 'LIQUID', 'style': 'inkSpread', 'label': 'INK SPREAD'},
@@ -73,6 +77,21 @@ class _ShowcaseDashboardState extends State<ShowcaseDashboard> {
     {'category': 'PHYSICS', 'style': 'pendulum', 'label': 'NEWTON PENDULUM'},
     {'category': 'PHYSICS', 'style': 'bounceChain', 'label': 'BOUNCE CHAIN'},
     {'category': 'PHYSICS', 'style': 'gravityOrbit', 'label': 'GRAVITY ORBIT'},
+    {
+      'category': 'PHYSICS',
+      'style': 'fluidParticle',
+      'label': 'FLUID ATTRACTION'
+    },
+    {
+      'category': 'PHYSICS',
+      'style': 'sandSimulation',
+      'label': 'FALLING HOURGLASS SAND'
+    },
+    {
+      'category': 'PHYSICS',
+      'style': 'magneticField',
+      'label': 'MAGNETIC FILINGS'
+    },
     {'category': 'MINIMAL', 'style': 'lineDraw', 'label': 'LEMNISCATE PATH'},
     {'category': 'MINIMAL', 'style': 'morphShape', 'label': 'MORPHING SHAPES'},
     {
@@ -83,244 +102,183 @@ class _ShowcaseDashboardState extends State<ShowcaseDashboard> {
     {'category': 'SAAS', 'style': 'pulseGrid', 'label': 'SKELETON GRID'},
     {'category': 'SAAS', 'style': 'analytics', 'label': 'CHART ANALYTICS'},
     {'category': 'SAAS', 'style': 'cloudSync', 'label': 'SYNC CLOUD BUBBLES'},
+    {
+      'category': 'CYBERPUNK',
+      'style': 'terminalBoot',
+      'label': 'CONSOLE BOOT TERMINAL'
+    },
+    {'category': 'CYBERPUNK', 'style': 'glitch', 'label': 'RGB CYBER GLITCH'},
+    {
+      'category': 'CYBERPUNK',
+      'style': 'cyberRing',
+      'label': 'HUD CONCENTRIC RING'
+    },
+    {
+      'category': 'CYBERPUNK',
+      'style': 'dataStream',
+      'label': 'DATA STREAM PIPES'
+    },
+    {
+      'category': 'CYBERPUNK',
+      'style': 'firewallScanner',
+      'label': 'FIREWALL SCANNER RADAR'
+    },
+    {
+      'category': 'NATURE',
+      'style': 'firefly',
+      'label': 'GLOWING FIREFLY LIGHTS'
+    },
+    {'category': 'NATURE', 'style': 'tornado', 'label': 'WIND TORNADO DUST'},
+    {
+      'category': 'NATURE',
+      'style': 'volcano',
+      'label': 'MOLTEN MAGMA ERUPTION'
+    },
+    {
+      'category': 'NATURE',
+      'style': 'leafWind',
+      'label': 'FALLING AUTUMN LEAVES'
+    },
+    {
+      'category': 'NATURE',
+      'style': 'solarEclipse',
+      'label': 'SOLAR ECLIPSE CORONA'
+    },
+    {
+      'category': 'LUXURY',
+      'style': 'diamondSpark',
+      'label': 'PRISM SHINE DIAMOND'
+    },
+    {'category': 'LUXURY', 'style': 'silkFlow', 'label': 'SILK FLOW GRADIENT'},
+    {'category': 'LUXURY', 'style': 'goldSweep', 'label': 'GOLD BAR SHIMMER'},
+    {
+      'category': 'LUXURY',
+      'style': 'premiumWatch',
+      'label': 'WATCH CLOCKWORK GEAR'
+    },
+    {
+      'category': 'GEOMETRY',
+      'style': 'infiniteCube',
+      'label': 'IMPOSSIBLE INFINITY CUBE'
+    },
+    {
+      'category': 'GEOMETRY',
+      'style': 'hexagonSwarm',
+      'label': 'HONEYCOMB RADIAL WAVE'
+    },
+    {
+      'category': 'GEOMETRY',
+      'style': 'fractal',
+      'label': 'RECURSIVE FRACTAL TREE'
+    },
+    {
+      'category': 'GEOMETRY',
+      'style': 'polygonMorph',
+      'label': 'SMOOTH POLYGON MORPH'
+    },
+    {
+      'category': 'SOCIAL',
+      'style': 'reelsUpload',
+      'label': 'REELS NEON PROGRESS'
+    },
+    {
+      'category': 'SOCIAL',
+      'style': 'liveStream',
+      'label': 'LIVE BROADCAST SIGNAL'
+    },
+    {
+      'category': 'SOCIAL',
+      'style': 'storyRing',
+      'label': 'STORY GRADIENT RING'
+    },
+    {
+      'category': 'THREED',
+      'style': 'floatingCube',
+      'label': '3D PARALLAX CUBES'
+    },
+    {
+      'category': 'THREED',
+      'style': 'isometric',
+      'label': 'STACKED ISOMETRIC BLOCK'
+    },
+    {
+      'category': 'THREED',
+      'style': 'holographicSphere',
+      'label': 'WIRE SPHERE LANDSCAPE'
+    },
+    {
+      'category': 'AUDIO',
+      'style': 'equalizer',
+      'label': 'EQUALIZER SOUND FREQ'
+    },
+    {'category': 'AUDIO', 'style': 'vinyl', 'label': 'SPINNING RETRO RECORD'},
+    {'category': 'AUDIO', 'style': 'beatWave', 'label': 'BASS REACTIVE CURVE'},
+    {
+      'category': 'ARTISTIC',
+      'style': 'zenCircle',
+      'label': 'ENSO ZEN BRUSH STROKE'
+    },
+    {
+      'category': 'ARTISTIC',
+      'style': 'origami',
+      'label': 'ORIGAMI PAPER CRANE'
+    },
+    {
+      'category': 'ARTISTIC',
+      'style': 'calligraphyStroke',
+      'label': 'CALLIGRAPHY INFINITY'
+    },
+    {
+      'category': 'EXPERIMENTAL',
+      'style': 'timeWarp',
+      'label': 'MELTING TIME WARP CLOCK'
+    },
+    {
+      'category': 'EXPERIMENTAL',
+      'style': 'portal',
+      'label': 'SCI-FI ENERGY PORTAL'
+    },
+    {
+      'category': 'EXPERIMENTAL',
+      'style': 'dimensionalRift',
+      'label': 'CYBER SPATIAL RIFT'
+    },
+    {
+      'category': 'EXPERIMENTAL',
+      'style': 'wormhole',
+      'label': 'COSMIC TUNNEL STARS'
+    },
   ];
 
   Widget _buildAdvancedLoaderItem(int index) {
-    switch (index) {
-      case 0:
-        return MotionLoader.ai(
-            style: MotionAiStyle.neuralNetwork,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 1:
-        return MotionLoader.ai(
-            style: MotionAiStyle.thinking,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 2:
-        return MotionLoader.ai(
-            style: MotionAiStyle.quantum,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 3:
-        return MotionLoader.ai(
-            style: MotionAiStyle.tokenStream,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 4:
-        return MotionLoader.liquid(
-            style: MotionLiquidStyle.lavaLamp,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 5:
-        return MotionLoader.liquid(
-            style: MotionLiquidStyle.waterDrop,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 6:
-        return MotionLoader.liquid(
-            style: MotionLiquidStyle.inkSpread,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 7:
-        return MotionLoader.glass(
-            style: MotionGlassStyle.glassOrb,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 8:
-        return MotionLoader.glass(
-            style: MotionGlassStyle.prismCrystal,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 9:
-        return MotionLoader.glass(
-            style: MotionGlassStyle.aurora,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 10:
-        return MotionLoader.space(
-            style: MotionSpaceStyle.blackHole,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 11:
-        return MotionLoader.space(
-            style: MotionSpaceStyle.galaxy,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 12:
-        return MotionLoader.space(
-            style: MotionSpaceStyle.warpSpeed,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 13:
-        return MotionLoader.gaming(
-            style: MotionGamingStyle.xpProgress,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 14:
-        return MotionLoader.gaming(
-            style: MotionGamingStyle.bossFight,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 15:
-        return MotionLoader.gaming(
-            style: MotionGamingStyle.pixel,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 16:
-        return MotionLoader.physics(
-            style: MotionPhysicsStyle.pendulum,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 17:
-        return MotionLoader.physics(
-            style: MotionPhysicsStyle.bounceChain,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 18:
-        return MotionLoader.physics(
-            style: MotionPhysicsStyle.gravityOrbit,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 19:
-        return MotionLoader.minimal(
-            style: MotionMinimalStyle.lineDraw,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 20:
-        return MotionLoader.minimal(
-            style: MotionMinimalStyle.morphShape,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 21:
-        return MotionLoader.minimal(
-            style: MotionMinimalStyle.infiniteRibbon,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 22:
-        return MotionLoader.saas(
-            style: MotionSaasStyle.pulseGrid,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 23:
-        return MotionLoader.saas(
-            style: MotionSaasStyle.analytics,
-            color: _loaderColor,
-            size: _loaderSize);
-      case 24:
-        return MotionLoader.saas(
-            style: MotionSaasStyle.cloudSync,
-            color: _loaderColor,
-            size: _loaderSize);
-      default:
-        return Container();
+    if (index < 0 || index >= _advancedLoadersMeta.length) {
+      return Container();
     }
+    final meta = _advancedLoadersMeta[index];
+    final category = meta['category']!.toLowerCase();
+    final style = meta['style']!;
+    return MotionLoader.generator(
+      category: category,
+      style: style,
+      color: _loaderColor,
+      size: _loaderSize,
+    );
   }
 
   Widget _buildAdvancedLoaderItemPreview(int index, Color color) {
-    switch (index) {
-      case 0:
-        return MotionLoader.ai(
-            style: MotionAiStyle.neuralNetwork,
-            color: color,
-            size: 28,
-            glow: false);
-      case 1:
-        return MotionLoader.ai(
-            style: MotionAiStyle.thinking, color: color, size: 28, glow: false);
-      case 2:
-        return MotionLoader.ai(
-            style: MotionAiStyle.quantum, color: color, size: 28, glow: false);
-      case 3:
-        return MotionLoader.ai(
-            style: MotionAiStyle.tokenStream, color: color, size: 28);
-      case 4:
-        return MotionLoader.liquid(
-            style: MotionLiquidStyle.lavaLamp, color: color, size: 28);
-      case 5:
-        return MotionLoader.liquid(
-            style: MotionLiquidStyle.waterDrop, color: color, size: 28);
-      case 6:
-        return MotionLoader.liquid(
-            style: MotionLiquidStyle.inkSpread, color: color, size: 28);
-      case 7:
-        return MotionLoader.glass(
-            style: MotionGlassStyle.glassOrb,
-            color: color,
-            size: 28,
-            glow: false);
-      case 8:
-        return MotionLoader.glass(
-            style: MotionGlassStyle.prismCrystal,
-            color: color,
-            size: 28,
-            glow: false);
-      case 9:
-        return MotionLoader.glass(
-            style: MotionGlassStyle.aurora, color: color, size: 28);
-      case 10:
-        return MotionLoader.space(
-            style: MotionSpaceStyle.blackHole,
-            color: color,
-            size: 28,
-            glow: false);
-      case 11:
-        return MotionLoader.space(
-            style: MotionSpaceStyle.galaxy, color: color, size: 28);
-      case 12:
-        return MotionLoader.space(
-            style: MotionSpaceStyle.warpSpeed, color: color, size: 28);
-      case 13:
-        return MotionLoader.gaming(
-            style: MotionGamingStyle.xpProgress,
-            color: color,
-            size: 28,
-            glow: false);
-      case 14:
-        return MotionLoader.gaming(
-            style: MotionGamingStyle.bossFight,
-            color: color,
-            size: 28,
-            glow: false);
-      case 15:
-        return MotionLoader.gaming(
-            style: MotionGamingStyle.pixel, color: color, size: 28);
-      case 16:
-        return MotionLoader.physics(
-            style: MotionPhysicsStyle.pendulum, color: color, size: 28);
-      case 17:
-        return MotionLoader.physics(
-            style: MotionPhysicsStyle.bounceChain, color: color, size: 28);
-      case 18:
-        return MotionLoader.physics(
-            style: MotionPhysicsStyle.gravityOrbit,
-            color: color,
-            size: 28,
-            glow: false);
-      case 19:
-        return MotionLoader.minimal(
-            style: MotionMinimalStyle.lineDraw, color: color, size: 28);
-      case 20:
-        return MotionLoader.minimal(
-            style: MotionMinimalStyle.morphShape, color: color, size: 28);
-      case 21:
-        return MotionLoader.minimal(
-            style: MotionMinimalStyle.infiniteRibbon, color: color, size: 28);
-      case 22:
-        return MotionLoader.saas(
-            style: MotionSaasStyle.pulseGrid, color: color, size: 28);
-      case 23:
-        return MotionLoader.saas(
-            style: MotionSaasStyle.analytics, color: color, size: 28);
-      case 24:
-        return MotionLoader.saas(
-            style: MotionSaasStyle.cloudSync,
-            color: color,
-            size: 28,
-            glow: false);
-      default:
-        return Container();
+    if (index < 0 || index >= _advancedLoadersMeta.length) {
+      return Container();
     }
+    final meta = _advancedLoadersMeta[index];
+    final category = meta['category']!.toLowerCase();
+    final style = meta['style']!;
+    return MotionLoader.generator(
+      category: category,
+      style: style,
+      color: color,
+      size: 28,
+      glow: false,
+    );
   }
 
   Widget _buildPresetToggleBtn(bool targetValue, String label) {

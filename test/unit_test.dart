@@ -67,14 +67,39 @@ void main() {
 
     test('Category Style Enums Initialization Tests', () {
       // Validate all category enum entries are compile-safe and exist
-      expect(MotionAiStyle.values.length, equals(4));
+      expect(MotionAiStyle.values.length, equals(8));
       expect(MotionLiquidStyle.values.length, equals(3));
       expect(MotionGlassStyle.values.length, equals(3));
       expect(MotionSpaceStyle.values.length, equals(3));
       expect(MotionGamingStyle.values.length, equals(3));
-      expect(MotionPhysicsStyle.values.length, equals(3));
+      expect(MotionPhysicsStyle.values.length, equals(6));
       expect(MotionMinimalStyle.values.length, equals(3));
       expect(MotionSaasStyle.values.length, equals(3));
+      expect(MotionCyberpunkStyle.values.length, equals(5));
+      expect(MotionNatureStyle.values.length, equals(5));
+      expect(MotionLuxuryStyle.values.length, equals(4));
+      expect(MotionGeometryStyle.values.length, equals(4));
+      expect(MotionSocialStyle.values.length, equals(3));
+      expect(MotionThreeDStyle.values.length, equals(3));
+      expect(MotionAudioStyle.values.length, equals(3));
+      expect(MotionArtisticStyle.values.length, equals(3));
+      expect(MotionExperimentalStyle.values.length, equals(4));
+    });
+
+    test('MotionLoader.fromJson and generator parsing tests', () {
+      final jsonLoader = MotionLoader.fromJson(const {
+        'category': 'cyberpunk',
+        'style': 'terminalBoot',
+        'size': 60.0,
+      });
+      expect(jsonLoader, isA<MotionLoader>());
+
+      final genWidget = MotionLoader.generator(
+        category: 'nature',
+        style: 'firefly',
+        size: 80.0,
+      );
+      expect(genWidget, isA<MotionLoader>());
     });
   });
 }

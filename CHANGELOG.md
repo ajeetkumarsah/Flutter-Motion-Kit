@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3] - 2026-05-29
+
+### Added
+- **Interactive Visual Preview Catalog**: Integrated comprehensive visual GridView tables in `README.md` showcasing all 11 standard and all 60+ advanced vector loader styles. Enabled responsive loop-autoplaying `.mov` previews using native `<video>` tags.
+- **Robust Missing-Asset Fallbacks**: Structured preview slots gracefully for all existing styles; any style without an animated preview displays its exact constructor/enum entry alongside a clean `*No Preview (Asset Missing)*` slot.
+- Expanded the vector loader library with **32+ advanced premium styles** spanning new innovative categories:
+  - **AI Category**: `MotionTokenPredictionLoader` (real-time prediction typing with live vertical probability charts), `MotionNeuralPulseLoader` (electric synapse nodes), `MotionTensorFlowLoader`, and `MotionAiEyeLoader`.
+  - **Physics Category**: `MotionFluidParticleLoader` (viscous cohesion metaballs), `MotionSandSimulationLoader` (hourglass gravity particles), and `MotionMagneticFieldLoader` (flux vector filings).
+  - **Social Category**: `MotionReelsUploadLoader` (progressive neon gradient border sweeps), `MotionLiveStreamLoader` (signal antennas with live indicators), and `MotionStoryRingLoader` (avatar borders).
+  - **3D Category**: `MotionFloatingCubeLoader` (overlapping parallax cubes), `MotionIsometricLoader` (assembling building blocks), and `MotionHolographicSphereLoader` (latitude/longitude wireframes).
+  - **Audio Category**: `MotionEqualizerLoader` (staggered frequency bouncing bars), `MotionVinylLoader` (spinning retro disc metallic reflections), and `MotionBeatWaveLoader` (bass-pulsing wave curves).
+  - **Artistic Category**: `MotionZenCircleLoader` (ink wash brush strokes), `MotionOrigamiLoader` (paper-folding facets), and `MotionCalligraphyStrokeLoader` (SVG drawing paths).
+  - **Experimental Category**: `MotionTimeWarpLoader` (melting warped clocks), `MotionPortalLoader` (spiral particle vortexes), `MotionDimensionalRiftLoader` (neon leaking cracks), and `MotionWormholeLoader` (cosmic zooming tunnels).
+- Created `MotionBuilder` compound decorator system that stacks multiple GPU-optimized visual effects like `GlowEffect`, `OrbitEffect`, `RippleEffect`, `GlitchEffect`, and `FloatEffect` dynamically.
+- Upgraded the automated Unit and Widget testing suite to cover all 77+ premium vector loaders.
+
+### Fixed
+- **Bulletproof Constrained Layouts**: Refactored `MotionTerminalBootLoader` and `MotionTokenPredictionLoader` to use highly robust, scale-independent internal layout canvases wrapped in `FittedBox(fit: BoxFit.contain)`. Replaced hardcoded dimensions with fluid `AnimatedFractionallySizedBox` transitions to guarantee perfect layouts and zero horizontal or vertical `RenderFlex` overflows in narrow environments (like 21x21 constraints in test engines).
+- **Static Analysis Perfect Score**: Cleaned up all remaining warnings, lints, and deprecations across the entire package codebase, including modern `toARGB32()` color conversions, Matrix4 `.multiply` transforms, unused imports, and optimal `const` constructor allocations.
+
 ## [1.0.2] - 2026-05-29
 
 ### Added

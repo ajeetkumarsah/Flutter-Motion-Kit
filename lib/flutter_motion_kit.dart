@@ -31,6 +31,16 @@ export 'loaders/gaming/gaming_category.dart';
 export 'loaders/physics/physics_category.dart';
 export 'loaders/minimal/minimal_category.dart';
 export 'loaders/saas/saas_category.dart';
+export 'loaders/cyberpunk/cyberpunk_category.dart';
+export 'loaders/nature/nature_category.dart';
+export 'loaders/luxury/luxury_category.dart';
+export 'loaders/geometry/geometry_category.dart';
+export 'loaders/social/social_category.dart';
+export 'loaders/three_d/three_d_category.dart';
+export 'loaders/audio/audio_category.dart';
+export 'loaders/artistic/artistic_category.dart';
+export 'loaders/experimental/experimental_category.dart';
+export 'loaders/builder/motion_builder.dart';
 
 // Cards, Glassmorphism, Skeletons & Backgrounds
 export 'backgrounds/aurora_background.dart';

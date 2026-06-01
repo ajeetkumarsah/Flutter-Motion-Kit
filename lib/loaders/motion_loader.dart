@@ -21,6 +21,15 @@ import 'gaming/gaming_category.dart';
 import 'physics/physics_category.dart';
 import 'minimal/minimal_category.dart';
 import 'saas/saas_category.dart';
+import 'cyberpunk/cyberpunk_category.dart';
+import 'nature/nature_category.dart';
+import 'luxury/luxury_category.dart';
+import 'geometry/geometry_category.dart';
+import 'social/social_category.dart';
+import 'three_d/three_d_category.dart';
+import 'audio/audio_category.dart';
+import 'artistic/artistic_category.dart';
+import 'experimental/experimental_category.dart';
 
 /// Defines the available types of loaders in the flutter_motion_kit library.
 enum MotionLoaderType {
@@ -137,6 +146,29 @@ class MotionLoader extends StatelessWidget {
             return MotionAiTokenStream(
               color: activeColor,
               size: size,
+            );
+          case MotionAiStyle.tokenPrediction:
+            return MotionTokenPredictionLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionAiStyle.neuralPulse:
+            return MotionNeuralPulseLoader(
+              color: activeColor,
+              size: size,
+              glow: glow,
+            );
+          case MotionAiStyle.tensorFlow:
+            return MotionTensorFlowLoader(
+              color: activeColor,
+              size: size,
+              glow: glow,
+            );
+          case MotionAiStyle.aiEye:
+            return MotionAiEyeLoader(
+              color: activeColor,
+              size: size,
+              glow: glow,
             );
         }
       },
@@ -318,6 +350,22 @@ class MotionLoader extends StatelessWidget {
               size: size,
               glow: glow,
             );
+          case MotionPhysicsStyle.fluidParticle:
+            return MotionFluidParticleLoader(
+              color: activeColor,
+              size: size,
+              glow: glow,
+            );
+          case MotionPhysicsStyle.sandSimulation:
+            return MotionSandSimulationLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionPhysicsStyle.magneticField:
+            return MotionMagneticFieldLoader(
+              color: activeColor,
+              size: size,
+            );
         }
       },
     );
@@ -394,6 +442,477 @@ class MotionLoader extends StatelessWidget {
         }
       },
     );
+  }
+
+  /// Cyberpunk Theme Category: console terminals, glitches, and scanners.
+  factory MotionLoader.cyberpunk({
+    Key? key,
+    required MotionCyberpunkStyle style,
+    Color? color,
+    double size = 50.0,
+  }) {
+    return MotionLoader._internal(
+      key: key,
+      color: color,
+      size: size,
+      builder: (context) {
+        final activeColor = color ?? Theme.of(context).primaryColor;
+        switch (style) {
+          case MotionCyberpunkStyle.terminalBoot:
+            return MotionTerminalBootLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionCyberpunkStyle.glitch:
+            return MotionGlitchLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionCyberpunkStyle.cyberRing:
+            return MotionCyberRingLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionCyberpunkStyle.dataStream:
+            return MotionDataStreamLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionCyberpunkStyle.firewallScanner:
+            return MotionFirewallScannerLoader(
+              color: activeColor,
+              size: size,
+            );
+        }
+      },
+    );
+  }
+
+  /// Nature Theme Category: fireflies, tornadoes, volcanoes, sways & eclipses.
+  factory MotionLoader.nature({
+    Key? key,
+    required MotionNatureStyle style,
+    Color? color,
+    double size = 50.0,
+  }) {
+    return MotionLoader._internal(
+      key: key,
+      color: color,
+      size: size,
+      builder: (context) {
+        final activeColor = color ?? Theme.of(context).primaryColor;
+        switch (style) {
+          case MotionNatureStyle.firefly:
+            return MotionFireflyLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionNatureStyle.tornado:
+            return MotionTornadoLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionNatureStyle.volcano:
+            return MotionVolcanoLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionNatureStyle.leafWind:
+            return MotionLeafWindLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionNatureStyle.solarEclipse:
+            return MotionSolarEclipseLoader(
+              color: activeColor,
+              size: size,
+            );
+        }
+      },
+    );
+  }
+
+  /// Luxury Theme Category: diamond sparks, silk curves, watch gear mechanical ticks.
+  factory MotionLoader.luxury({
+    Key? key,
+    required MotionLuxuryStyle style,
+    Color? color,
+    double size = 50.0,
+  }) {
+    return MotionLoader._internal(
+      key: key,
+      color: color,
+      size: size,
+      builder: (context) {
+        final activeColor = color ?? Theme.of(context).primaryColor;
+        switch (style) {
+          case MotionLuxuryStyle.diamondSpark:
+            return MotionDiamondSparkLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionLuxuryStyle.silkFlow:
+            return MotionSilkFlowLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionLuxuryStyle.goldSweep:
+            return MotionGoldSweepLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionLuxuryStyle.premiumWatch:
+            return MotionPremiumWatchLoader(
+              color: activeColor,
+              size: size,
+            );
+        }
+      },
+    );
+  }
+
+  /// Geometry Theme Category: impossible cubes, honeycomb swarms, scaling branch fractals.
+  factory MotionLoader.geometry({
+    Key? key,
+    required MotionGeometryStyle style,
+    Color? color,
+    double size = 50.0,
+  }) {
+    return MotionLoader._internal(
+      key: key,
+      color: color,
+      size: size,
+      builder: (context) {
+        final activeColor = color ?? Theme.of(context).primaryColor;
+        switch (style) {
+          case MotionGeometryStyle.infiniteCube:
+            return MotionInfiniteCubeLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionGeometryStyle.hexagonSwarm:
+            return MotionHexagonSwarmLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionGeometryStyle.fractal:
+            return MotionFractalLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionGeometryStyle.polygonMorph:
+            return MotionPolygonMorphLoader(
+              color: activeColor,
+              size: size,
+            );
+        }
+      },
+    );
+  }
+
+  /// Social Theme Category: Reels upload circles, streaming pulses & story sweeps.
+  factory MotionLoader.social({
+    Key? key,
+    required MotionSocialStyle style,
+    Color? color,
+    double size = 50.0,
+    bool glow = true,
+  }) {
+    return MotionLoader._internal(
+      key: key,
+      color: color,
+      size: size,
+      builder: (context) {
+        final activeColor = color ?? Theme.of(context).primaryColor;
+        switch (style) {
+          case MotionSocialStyle.reelsUpload:
+            return MotionReelsUploadLoader(
+              color: activeColor,
+              size: size,
+              glow: glow,
+            );
+          case MotionSocialStyle.liveStream:
+            return MotionLiveStreamLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionSocialStyle.storyRing:
+            return MotionStoryRingLoader(
+              color: activeColor,
+              size: size,
+            );
+        }
+      },
+    );
+  }
+
+  /// 3D Theme Category: floating parallax cubes, stacked isometrics, holographic wireframe spheres.
+  factory MotionLoader.threeD({
+    Key? key,
+    required MotionThreeDStyle style,
+    Color? color,
+    double size = 50.0,
+  }) {
+    return MotionLoader._internal(
+      key: key,
+      color: color,
+      size: size,
+      builder: (context) {
+        final activeColor = color ?? Theme.of(context).primaryColor;
+        switch (style) {
+          case MotionThreeDStyle.floatingCube:
+            return MotionFloatingCubeLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionThreeDStyle.isometric:
+            return MotionIsometricLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionThreeDStyle.holographicSphere:
+            return MotionHolographicSphereLoader(
+              color: activeColor,
+              size: size,
+            );
+        }
+      },
+    );
+  }
+
+  /// Audio Theme Category: equalizer sound bars, spinning records & frequency curves.
+  factory MotionLoader.audio({
+    Key? key,
+    required MotionAudioStyle style,
+    Color? color,
+    double size = 50.0,
+  }) {
+    return MotionLoader._internal(
+      key: key,
+      color: color,
+      size: size,
+      builder: (context) {
+        final activeColor = color ?? Theme.of(context).primaryColor;
+        switch (style) {
+          case MotionAudioStyle.equalizer:
+            return MotionEqualizerLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionAudioStyle.vinyl:
+            return MotionVinylLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionAudioStyle.beatWave:
+            return MotionBeatWaveLoader(
+              color: activeColor,
+              size: size,
+            );
+        }
+      },
+    );
+  }
+
+  /// Artistic Theme Category: calligraphy brush strokes, origami panels.
+  factory MotionLoader.artistic({
+    Key? key,
+    required MotionArtisticStyle style,
+    Color? color,
+    double size = 50.0,
+  }) {
+    return MotionLoader._internal(
+      key: key,
+      color: color,
+      size: size,
+      builder: (context) {
+        final activeColor = color ?? Theme.of(context).primaryColor;
+        switch (style) {
+          case MotionArtisticStyle.zenCircle:
+            return MotionZenCircleLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionArtisticStyle.origami:
+            return MotionOrigamiLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionArtisticStyle.calligraphyStroke:
+            return MotionCalligraphyStrokeLoader(
+              color: activeColor,
+              size: size,
+            );
+        }
+      },
+    );
+  }
+
+  /// Experimental Theme Category: temporal warps, portals, dimensional rifts.
+  factory MotionLoader.experimental({
+    Key? key,
+    required MotionExperimentalStyle style,
+    Color? color,
+    double size = 50.0,
+  }) {
+    return MotionLoader._internal(
+      key: key,
+      color: color,
+      size: size,
+      builder: (context) {
+        final activeColor = color ?? Theme.of(context).primaryColor;
+        switch (style) {
+          case MotionExperimentalStyle.timeWarp:
+            return MotionTimeWarpLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionExperimentalStyle.portal:
+            return MotionPortalLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionExperimentalStyle.dimensionalRift:
+            return MotionDimensionalRiftLoader(
+              color: activeColor,
+              size: size,
+            );
+          case MotionExperimentalStyle.wormhole:
+            return MotionWormholeLoader(
+              color: activeColor,
+              size: size,
+            );
+        }
+      },
+    );
+  }
+
+  /// Configuration-based factory builder from a JSON map.
+  factory MotionLoader.fromJson(Map<String, dynamic> json) {
+    final String category = json['category'] ?? 'default';
+    final String styleStr = json['style'] ?? '';
+    final Color? color = json['color'] != null
+        ? Color(int.parse(json['color'].toString()))
+        : null;
+    final double size = (json['size'] ?? 50.0).toDouble();
+    final bool glow = json['glow'] ?? true;
+
+    switch (category) {
+      case 'ai':
+        final style = MotionAiStyle.values.firstWhere((e) => e.name == styleStr,
+            orElse: () => MotionAiStyle.neuralNetwork);
+        return MotionLoader.ai(
+            style: style, color: color, size: size, glow: glow);
+      case 'liquid':
+        final style = MotionLiquidStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionLiquidStyle.lavaLamp);
+        return MotionLoader.liquid(style: style, color: color, size: size);
+      case 'glass':
+        final style = MotionGlassStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionGlassStyle.glassOrb);
+        return MotionLoader.glass(
+            style: style, color: color, size: size, glow: glow);
+      case 'space':
+        final style = MotionSpaceStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionSpaceStyle.blackHole);
+        return MotionLoader.space(
+            style: style, color: color, size: size, glow: glow);
+      case 'gaming':
+        final style = MotionGamingStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionGamingStyle.xpProgress);
+        return MotionLoader.gaming(
+            style: style, color: color, size: size, glow: glow);
+      case 'physics':
+        final style = MotionPhysicsStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionPhysicsStyle.pendulum);
+        return MotionLoader.physics(
+            style: style, color: color, size: size, glow: glow);
+      case 'minimal':
+        final style = MotionMinimalStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionMinimalStyle.lineDraw);
+        return MotionLoader.minimal(style: style, color: color, size: size);
+      case 'saas':
+        final style = MotionSaasStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionSaasStyle.pulseGrid);
+        return MotionLoader.saas(
+            style: style, color: color, size: size, glow: glow);
+      case 'cyberpunk':
+        final style = MotionCyberpunkStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionCyberpunkStyle.terminalBoot);
+        return MotionLoader.cyberpunk(style: style, color: color, size: size);
+      case 'nature':
+        final style = MotionNatureStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionNatureStyle.firefly);
+        return MotionLoader.nature(style: style, color: color, size: size);
+      case 'luxury':
+        final style = MotionLuxuryStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionLuxuryStyle.diamondSpark);
+        return MotionLoader.luxury(style: style, color: color, size: size);
+      case 'geometry':
+        final style = MotionGeometryStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionGeometryStyle.infiniteCube);
+        return MotionLoader.geometry(style: style, color: color, size: size);
+      case 'social':
+        final style = MotionSocialStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionSocialStyle.reelsUpload);
+        return MotionLoader.social(
+            style: style, color: color, size: size, glow: glow);
+      case 'threeD':
+        final style = MotionThreeDStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionThreeDStyle.floatingCube);
+        return MotionLoader.threeD(style: style, color: color, size: size);
+      case 'audio':
+        final style = MotionAudioStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionAudioStyle.equalizer);
+        return MotionLoader.audio(style: style, color: color, size: size);
+      case 'artistic':
+        final style = MotionArtisticStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionArtisticStyle.zenCircle);
+        return MotionLoader.artistic(style: style, color: color, size: size);
+      case 'experimental':
+        final style = MotionExperimentalStyle.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionExperimentalStyle.timeWarp);
+        return MotionLoader.experimental(
+            style: style, color: color, size: size);
+      default:
+        final type = MotionLoaderType.values.firstWhere(
+            (e) => e.name == styleStr,
+            orElse: () => MotionLoaderType.ai);
+        return MotionLoader(type: type, color: color, size: size);
+    }
+  }
+
+  /// Dynamic runtime custom builder/generator factory.
+  static Widget generator({
+    required String category,
+    required String style,
+    Color? color,
+    double size = 50.0,
+    bool glow = true,
+  }) {
+    return MotionLoader.fromJson({
+      'category': category,
+      'style': style,
+      'color': color?.toARGB32(),
+      'size': size,
+      'glow': glow,
+    });
   }
 
   @override
