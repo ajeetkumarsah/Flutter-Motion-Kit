@@ -3,8 +3,11 @@
 [![pub package](https://img.shields.io/pub/v/flutter_motion_kit.svg?logo=dart&logoColor=00C2FF&style=flat-square)](https://pub.dev/packages/flutter_motion_kit)
 [![Platform Support](https://img.shields.io/badge/platform-android%20%7C%20ios%20%7C%20web%20%7C%20macos%20%7C%20windows-blue.svg?style=flat-square)](https://pub.dev/packages/flutter_motion_kit)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg?style=flat-square)](LICENSE)
+[![Live Demo](https://img.shields.io/badge/demo-live_preview-success.svg?logo=google-chrome&logoColor=white&style=flat-square)](https://flutter-motion-kit.web.app/)
 
 A centralized, production-grade Flutter animation and loader library powered by GetX. Exposes premium loaders, custom-painted skeletons, frosted glassmorphism containers, 3D pointer-tracking cards, liquid-swipe page transitions, and interactive particle background effects under a single unified API.
+
+✨ **Try the Interactive Web Dashboard:** [https://flutter-motion-kit.web.app/](https://flutter-motion-kit.web.app/)
 
 Designed for high-performance (smooth 60fps/120fps), complete accessibility compliance (vestibular reduce-motion triggers), and absolute ease-of-use.
 
