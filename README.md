@@ -844,7 +844,7 @@ Exposed via `MotionBuilder`, this unified decorator system allows wrapping **any
 #### `MotionTransition`
 
 - **Visual Preview**:
-  ![Motion Transition Routes](assets/gifs/motion_transition.gif)
+  ![Motion Transition Routes](assets/loaders/transition_effects.gif)
 - **Description**: Helper containing static custom routing transition methods. Swaps scaffolding routes smoothly.
 - **Usage**:
 
