@@ -67,6 +67,7 @@ void main() {
 
     test('Category Style Enums Initialization Tests', () {
       // Validate all category enum entries are compile-safe and exist
+      expect(MotionRefreshAnimation.values.length, equals(20));
       expect(MotionAiStyle.values.length, equals(8));
       expect(MotionLiquidStyle.values.length, equals(3));
       expect(MotionGlassStyle.values.length, equals(3));

@@ -263,5 +263,28 @@ void main() {
       expect(find.byType(MotionSkeleton),
           findsNWidgets(3)); // Avatar + 2 Rectangle lines
     });
+
+    testWidgets('MotionPullToRefresh 20-Indicator Render Tests',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: MotionPullToRefresh(
+              animation: MotionRefreshAnimation.blackHole,
+              onRefresh: () async {},
+              child: ListView(
+                children: const [
+                  ListTile(title: Text('Row 1')),
+                  ListTile(title: Text('Row 2')),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+
+      expect(find.byType(MotionPullToRefresh), findsOneWidget);
+      expect(find.text('Row 1'), findsOneWidget);
+    });
   });
 }

@@ -54,7 +54,8 @@ export 'shimmer/shimmer_effect.dart';
 export 'buttons/motion_buttons.dart';
 export 'micro_interactions/micro_interactions.dart';
 export 'morphing/motion_morph.dart';
-export 'refresh/motion_refresh.dart';
+export 'refresh/motion_refresh_types.dart';
+export 'refresh/motion_pull_to_refresh.dart';
 
 // Custom Page Transitions
 export 'transitions/motion_transitions.dart';

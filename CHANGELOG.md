@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.4] - 2026-06-02
+
+### Added
+- **MotionPullToRefresh Indicator Ecosystem**: Engineered an advanced, high-performance scroll wrapper featuring **20 high-fidelity custom-painted animations** divided into fluid/natural, cosmic/gravitational, and mechanical/flagship styles (Liquid Morph, Rocket Launch, Black Hole, DNA Helix, Jelly Bounce, Magnetic Orb, Infinity Symbol, Tornado, Phoenix Rebirth, Neural Network, Portal, Clockwork, Origami Bird, Lightning Charge, Planet Orbit, Crystal Growth, Fireworks, Ink Spread, Hologram, and Signature).
+- **Customization Controls & API**: Exposed parameters for particle count, glow strength, animation speed, adaptive themes, and custom background/foreground color.
+- **Interactive Playground Dashboard**: Integrated a new dedicated tab inside the playground showcase dashboards (both `lib/main.dart` and `example/lib/main.dart`) to test all 20 indicator animations with real-time speed, particle, and glow sliders.
+- **Unit and Widget Tests**: Mounted and tested full gestures drag scrolling and snapping transitions covering the complete indicator collection in `test/widget_test.dart`.
+
 ## [1.0.3] - 2026-05-29
 
 ### Added

@@ -12,6 +12,8 @@ class MotionThemeData {
   final double borderRadius;
   final LinearGradient accentGradient;
 
+  Color get textColor => isDark ? Colors.white : const Color(0xFF090A0F);
+
   MotionThemeData({
     required this.isDark,
     this.primaryColor = MotionColors.primaryNeon,

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+// Import our central exports
 import 'package:flutter_motion_kit/flutter_motion_kit.dart';
 
 void main() async {
@@ -46,12 +47,24 @@ class _ShowcaseDashboardState extends State<ShowcaseDashboard> {
   int _selectedTab = 0;
   int _activeBgType = 1; // 0: None, 1: Particles, 2: Aurora
 
+  // Pull-To-Refresh Customizations
+  MotionRefreshAnimation _selectedRefreshAnim =
+      MotionRefreshAnimation.liquidMorph;
+  double _refreshParticles = 20.0;
+  double _refreshGlow = 6.0;
+  double _refreshSpeed = 1.0;
+  bool _showRefreshStatusText = true;
+  double _refreshHoldSeconds = 3.0;
+  MotionRefreshStyle _selectedRefreshStyle = MotionRefreshStyle.bouncing;
+
   // Loader Customizations
   MotionLoaderType _selectedLoaderType = MotionLoaderType.ai;
   Color _loaderColor = MotionColors.primaryNeon;
   double _loaderSize = 60.0;
   bool _useAdvancedLoaders = false;
   int _selectedAdvancedIndex = 0;
+// In your parent State class
+  final ScrollController _scrollController = ScrollController();
 
   static const List<Map<String, String>> _advancedLoadersMeta = [
     {'category': 'AI', 'style': 'neuralNetwork', 'label': 'NEURAL NETWORK'},
@@ -335,6 +348,7 @@ class _ShowcaseDashboardState extends State<ShowcaseDashboard> {
 
   @override
   void dispose() {
+    _scrollController.dispose();
     _fpsTimer.cancel();
     super.dispose();
   }
@@ -502,6 +516,8 @@ MotionLoader(
                       3, 'Cards & Skeletons', Icons.style_rounded, activeTheme),
                   _buildSidebarItem(4, 'Transitions & Morphs',
                       Icons.transform_rounded, activeTheme),
+                  _buildSidebarItem(
+                      5, 'Pull-To-Refresh', Icons.refresh_rounded, activeTheme),
                 ],
               ),
             ),
@@ -804,6 +820,8 @@ MotionLoader(
         return _buildCardsPlayground(activeTheme, width);
       case 4:
         return _buildTransitionsPlayground(activeTheme, width);
+      case 5:
+        return _buildRefreshPlayground(activeTheme, width);
       default:
         return const SizedBox.shrink();
     }
@@ -2381,6 +2399,359 @@ MotionLoader(
                 fontSize: 10,
                 color: Colors.white,
                 fontWeight: FontWeight.w500)),
+      ),
+    );
+  }
+
+  // Pull-To-Refresh Interactive Playground tab
+  Widget _buildRefreshPlayground(
+      MotionThemeData activeTheme, double screenWidth) {
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Section Title
+          Text(
+            'Pull-To-Refresh Indicators',
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: activeTheme.textColor,
+            ),
+          ),
+          const SizedBox(height: 6),
+          const Text(
+            'Experience 20 elite, custom-painted physics refresh indicators with complete customization.',
+            style: TextStyle(fontSize: 12, color: Colors.grey),
+          ),
+          const SizedBox(height: 24),
+
+          // Layout split
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final isWide = screenWidth > 800;
+              final playground = Container(
+                height: 380,
+                decoration: BoxDecoration(
+                  color: activeTheme.isDark
+                      ? const Color(0xFF0F0F1B)
+                      : const Color(0xFFE8E8EE),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                      color: activeTheme.primaryColor.withValues(alpha: 0.15),
+                      width: 1.5),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: MotionPullToRefresh(
+                    scrollController: _scrollController,
+                    animation: _selectedRefreshAnim,
+                    particleCount: _refreshParticles.round(),
+                    glowStrength: _refreshGlow,
+                    animationSpeed: _refreshSpeed,
+                    showStatusText: _showRefreshStatusText,
+                    refreshDuration: Duration(
+                        milliseconds: (_refreshHoldSeconds * 1000).round()),
+                    style: _selectedRefreshStyle,
+                    color: activeTheme.primaryColor,
+                    backgroundColor: Colors.transparent,
+                    onRefresh: () async {
+                      await Future.delayed(const Duration(milliseconds: 500));
+                    },
+                    child: ListView.builder(
+                      controller: _scrollController,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: 20,
+                      padding: const EdgeInsets.all(16),
+                      itemBuilder: (c, i) {
+                        return Container(
+                          margin: const EdgeInsets.only(bottom: 12),
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: activeTheme.isDark
+                                ? Colors.white.withValues(alpha: 0.03)
+                                : Colors.black.withValues(alpha: 0.03),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(Icons.swipe_down_rounded,
+                                  color: activeTheme.primaryColor, size: 20),
+                              const SizedBox(width: 16),
+                              Expanded(
+                                child: Text(
+                                  'Scrollable Demo Row ${i + 1} (Pull down to test!)',
+                                  style: TextStyle(
+                                      color: activeTheme.textColor,
+                                      fontSize: 13),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              );
+
+              final controls = Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: activeTheme.isDark
+                      ? Colors.white.withValues(alpha: 0.02)
+                      : Colors.black.withValues(alpha: 0.02),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'CUSTOMIZATION CONTROLS',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        color: activeTheme.primaryColor,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Selected Style Dropdown
+                    const Text('Select Animation Profile:',
+                        style: TextStyle(fontSize: 11, color: Colors.grey)),
+                    const SizedBox(height: 6),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      decoration: BoxDecoration(
+                        color: activeTheme.isDark
+                            ? Colors.black.withValues(alpha: 0.3)
+                            : Colors.white.withValues(alpha: 0.8),
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.white12),
+                      ),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<MotionRefreshAnimation>(
+                          value: _selectedRefreshAnim,
+                          isExpanded: true,
+                          dropdownColor: activeTheme.isDark
+                              ? const Color(0xFF0F0F1B)
+                              : Colors.white,
+                          style: TextStyle(
+                              color: activeTheme.textColor,
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold),
+                          items: MotionRefreshAnimation.values.map((anim) {
+                            return DropdownMenuItem(
+                              value: anim,
+                              child: Text(anim.name
+                                  .replaceAllMapped(RegExp(r'([A-Z])'),
+                                      (m) => ' ${m.group(1)}')
+                                  .toUpperCase()),
+                            );
+                          }).toList(),
+                          onChanged: (val) {
+                            if (val != null) {
+                              setState(() {
+                                _selectedRefreshAnim = val;
+                              });
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Selected Style Dropdown
+                    const Text('Select Interaction Style (iOS vs Android):',
+                        style: TextStyle(fontSize: 11, color: Colors.grey)),
+                    const SizedBox(height: 6),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      decoration: BoxDecoration(
+                        color: activeTheme.isDark
+                            ? Colors.black.withValues(alpha: 0.3)
+                            : Colors.white.withValues(alpha: 0.8),
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.white12),
+                      ),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<MotionRefreshStyle>(
+                          value: _selectedRefreshStyle,
+                          isExpanded: true,
+                          dropdownColor: activeTheme.isDark
+                              ? const Color(0xFF0F0F1B)
+                              : Colors.white,
+                          style: TextStyle(
+                              color: activeTheme.textColor,
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold),
+                          items: MotionRefreshStyle.values.map((style) {
+                            return DropdownMenuItem(
+                              value: style,
+                              child: Text(style.name.toUpperCase()),
+                            );
+                          }).toList(),
+                          onChanged: (val) {
+                            if (val != null) {
+                              setState(() {
+                                _selectedRefreshStyle = val;
+                              });
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+
+                    // Particle Count Slider
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('Particle Density:',
+                            style: TextStyle(fontSize: 11, color: Colors.grey)),
+                        Text('${_refreshParticles.round()}',
+                            style: TextStyle(
+                                fontSize: 11,
+                                color: activeTheme.primaryColor,
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                    Slider(
+                      value: _refreshParticles,
+                      min: 8.0,
+                      max: 40.0,
+                      activeColor: activeTheme.primaryColor,
+                      onChanged: (v) {
+                        setState(() {
+                          _refreshParticles = v;
+                        });
+                      },
+                    ),
+
+                    // Glow Strength Slider
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('Glow Blur Radius:',
+                            style: TextStyle(fontSize: 11, color: Colors.grey)),
+                        Text('${_refreshGlow.toStringAsFixed(1)}px',
+                            style: TextStyle(
+                                fontSize: 11,
+                                color: activeTheme.primaryColor,
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                    Slider(
+                      value: _refreshGlow,
+                      min: 0.0,
+                      max: 12.0,
+                      activeColor: activeTheme.primaryColor,
+                      onChanged: (v) {
+                        setState(() {
+                          _refreshGlow = v;
+                        });
+                      },
+                    ),
+
+                    // Animation Speed Slider
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('Animation Ticker Speed:',
+                            style: TextStyle(fontSize: 11, color: Colors.grey)),
+                        Text('${_refreshSpeed.toStringAsFixed(1)}x',
+                            style: TextStyle(
+                                fontSize: 11,
+                                color: activeTheme.primaryColor,
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                    Slider(
+                      value: _refreshSpeed,
+                      min: 0.5,
+                      max: 2.0,
+                      activeColor: activeTheme.primaryColor,
+                      onChanged: (v) {
+                        setState(() {
+                          _refreshSpeed = v;
+                        });
+                      },
+                    ),
+                    const SizedBox(height: 10),
+
+                    // Show Status Text Toggle
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('Show Status Helper Text:',
+                            style: TextStyle(fontSize: 11, color: Colors.grey)),
+                        Switch(
+                          value: _showRefreshStatusText,
+                          activeThumbColor: activeTheme.primaryColor,
+                          activeTrackColor:
+                              activeTheme.primaryColor.withValues(alpha: 0.5),
+                          onChanged: (v) {
+                            setState(() {
+                              _showRefreshStatusText = v;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+
+                    // Refresh Duration Slider
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text('Refresh Visual Hold:',
+                            style: TextStyle(fontSize: 11, color: Colors.grey)),
+                        Text('${_refreshHoldSeconds.toStringAsFixed(1)}s',
+                            style: TextStyle(
+                                fontSize: 11,
+                                color: activeTheme.primaryColor,
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                    Slider(
+                      value: _refreshHoldSeconds,
+                      min: 0.0,
+                      max: 5.0,
+                      activeColor: activeTheme.primaryColor,
+                      onChanged: (v) {
+                        setState(() {
+                          _refreshHoldSeconds = v;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              );
+
+              if (isWide) {
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(flex: 3, child: playground),
+                    const SizedBox(width: 24),
+                    Expanded(flex: 2, child: controls),
+                  ],
+                );
+              } else {
+                return Column(
+                  children: [
+                    playground,
+                    const SizedBox(height: 24),
+                    controls,
+                  ],
+                );
+              }
+            },
+          ),
+        ],
       ),
     );
   }
