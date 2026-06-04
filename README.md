@@ -666,24 +666,62 @@ Exposed via `MotionBuilder`, this unified decorator system allows wrapping **any
   - `onTap`: Async callback to resolve.
   - `child`: Center label when idle.
 
-#### `MotionRefreshIndicator`
+#### `MotionPullToRefresh`
 
-- **Visual Preview**:
-  ![Motion Refresh Indicator](assets/gifs/motion_refresh_indicator.gif)
-- **Description**: A customized pull-to-refresh list layout. As you pull, it fills up a liquid wave container; when refreshing, it rotates dynamic sci-fi orbits until the async function completes.
+- **Description**: Next-generation, high-performance pull-to-refresh wrapper exposing 20 premium visual custom-painted animations. Supports physics-based bouncing and clamping styles, custom hold delays, haptics, and adaptive dark/light themes.
 - **Usage**:
   ```dart
-  MotionRefreshIndicator(
-    onRefresh: () async => await fetchNetworkData(),
+  MotionPullToRefresh(
+    animation: MotionRefreshAnimation.liquidMorph,
+    onRefresh: () async {
+      await Future.delayed(const Duration(seconds: 2));
+    },
     child: ListView.builder(
       itemCount: 20,
-      itemBuilder: (c, i) => ListTile(title: Text('Row $i')),
+      itemBuilder: (context, index) => ListTile(title: Text('Item $index')),
     ),
   )
   ```
 - **Parameters**:
-  - `onRefresh`: Async method representing the network loading action.
-  - `child`: Scrollable list view content container.
+  - `onRefresh`: The asynchronous callback task triggered upon release.
+  - `animation`: The active `MotionRefreshAnimation` layout preset indicator to render.
+  - `refreshDuration`: The minimum duration the indicator remains visible (defaults to `3 seconds`).
+  - `collapseDuration`: The duration taken to smoothly slide up/collapse after refresh completes.
+  - `style`: The visual layout style (`bouncing` or `clamping`).
+  - `showStatusText`: Toggles rendering of helper text (e.g. "PULL TO REFRESH").
+  - `enableHaptics`: Toggles vibration feedback.
+
+---
+
+### 🎨 20 Refresh Indicator Animations Preview
+
+#### 🌊 Fluid & Nature Preset Grid
+
+| **Liquid Morph** | **Tornado** | **Ink Spread** |
+| :---: | :---: | :---: |
+| <img src="assets/refresh/liquid_morph.gif" width="160" /><br>`liquidMorph` | <img src="assets/refresh/tornado.gif" width="160" /><br>`tornado` | <img src="assets/refresh/ink_spread.gif" width="160" /><br>`inkSpread` |
+| **Crystal Growth** | **Phoenix Rebirth** | |
+| <img src="assets/refresh/crystal_growth.gif" width="160" /><br>`crystalGrowth` | <img src="assets/refresh/phoenix_rebirth.gif" width="160" /><br>`phoenixRebirth` | |
+
+#### 🌌 Cosmic & Gravitational Preset Grid
+
+| **Black Hole** | **Planet Orbit** | **Magnetic Orb** |
+| :---: | :---: | :---: |
+| <img src="assets/refresh/black_hole.gif" width="160" /><br>`blackHole` | <img src="assets/refresh/planet_orbit.gif" width="160" /><br>`planetOrbit` | <img src="assets/refresh/magnetic_orb.gif" width="160" /><br>`magneticOrb` |
+| **Portal** | | |
+| <img src="assets/refresh/portal.gif" width="160" /><br>`portal` | | |
+
+#### 🦾 Technical & Flagship Preset Grid
+
+| **Rocket Launch** | **DNA Helix** | **Jelly Bounce** |
+| :---: | :---: | :---: |
+| <img src="assets/refresh/rocket_laungh.gif" width="160" /><br>`rocketLaunch` | <img src="assets/refresh/dna_helix.gif" width="160" /><br>`dnaHelix` | <img src="assets/refresh/jelly_bounce.gif" width="160" /><br>`jellyBounce` |
+| **Infinity Symbol** | **Neural Network** | **Clockwork** |
+| <img src="assets/refresh/infinity_symbol.gif" width="160" /><br>`infinitySymbol` | <img src="assets/refresh/neural_network.gif" width="160" /><br>`neuralNetwork` | <img src="assets/refresh/clockwork.gif" width="160" /><br>`clockwork` |
+| **Origami Bird** | **Lightning Charge** | **Fireworks** |
+| <img src="assets/refresh/origami_bird.gif" width="160" /><br>`origamiBird` | <img src="assets/refresh/lighting_charge.gif" width="160" /><br>`lightningCharge` | <img src="assets/refresh/firework.gif" width="160" /><br>`fireworks` |
+| **Hologram** | **Signature** | |
+| <img src="assets/refresh/hologram.gif" width="160" /><br>`hologram` | <img src="assets/refresh/signature.gif" width="160" /><br>`signature` | |
 
 ---
 

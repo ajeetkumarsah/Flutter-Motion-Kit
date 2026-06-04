@@ -2,13 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.4] - 2026-06-02
+## [1.0.4] - 2026-06-04
 
 ### Added
 - **MotionPullToRefresh Indicator Ecosystem**: Engineered an advanced, high-performance scroll wrapper featuring **20 high-fidelity custom-painted animations** divided into fluid/natural, cosmic/gravitational, and mechanical/flagship styles (Liquid Morph, Rocket Launch, Black Hole, DNA Helix, Jelly Bounce, Magnetic Orb, Infinity Symbol, Tornado, Phoenix Rebirth, Neural Network, Portal, Clockwork, Origami Bird, Lightning Charge, Planet Orbit, Crystal Growth, Fireworks, Ink Spread, Hologram, and Signature).
 - **Customization Controls & API**: Exposed parameters for particle count, glow strength, animation speed, adaptive themes, and custom background/foreground color.
 - **Interactive Playground Dashboard**: Integrated a new dedicated tab inside the playground showcase dashboards (both `lib/main.dart` and `example/lib/main.dart`) to test all 20 indicator animations with real-time speed, particle, and glow sliders.
 - **Unit and Widget Tests**: Mounted and tested full gestures drag scrolling and snapping transitions covering the complete indicator collection in `test/widget_test.dart`.
+- **Animated Previews for All 20 Indicators**: Converted indicator recordings inside `assets/refresh/` from `.mov` to `.gif` and added comprehensive visual preview grids to `README.md` for all 20 pull-to-refresh styles.
+
+### Changed
+- **MVC Architecture Separation**: Refactored the file layout by extracting `MotionRefreshController` from `lib/refresh/motion_pull_to_refresh.dart` into its own file at `lib/refresh/controllers/motion_refresh_controller.dart` to strictly separate the Controller and View layers.
+- **Legacy Code Cleanups**: Removed the legacy and unwanted `MotionRefreshIndicator` (`lib/refresh/motion_refresh.dart`) and cleaned up all transitive exports in `lib/flutter_motion_kit.dart`.
 
 ## [1.0.3] - 2026-05-29
 
